@@ -91,7 +91,7 @@ Know Your Flow is an app that helps women track their periods by letting them in
 <img src="https://i.imgur.com/4Kr4YL1.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-
+<img src="https://drive.google.com/file/d/1kjz0DKtQQ3pZDn02qbMfjvDMVK_oB8NX/view?usp=sharing" width=800>
 ### [BONUS] Interactive Prototype
 <img src='http://g.recordit.co/AHQqBW2waO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
