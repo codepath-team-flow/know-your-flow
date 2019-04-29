@@ -102,7 +102,7 @@ Know Your Flow is an app that helps women track their periods by letting them in
 
 ### Models
 
-#### Post
+#### PeriodHistory
 
 Property | Type | Description
 ------------ | ------------- |  -------------
@@ -111,8 +111,19 @@ author	| Pointer to User	|  user
 startDate | DateTime| date user starts period 
 endDate	| DateTime	| date user ends period
 flowType	| String	| type of flow (heavy, medium, light)
-createdAt	| DateTime	| date when post is created (default field)
-updatedAt	| DateTime	| date when post is last updated (default field)
+createdAt	| DateTime	| date when new cycle is created (default field)
+updatedAt	| DateTime	| date when new cycle is last updated (default field)
+
+
+#### User
+Property | Type | Description
+------------ | ------------- |  -------------
+objectId	| String	| unique id for the user post (default field)
+createdAt | DateTime | date when user is created (default field)
+updatedAt | DateTime | date when user is last updated(default field)
+username | String | username
+password | String | hidden password
+email | String | email address
 
 ### Networking
 - List of network requests by screen 
