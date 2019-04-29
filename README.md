@@ -98,10 +98,137 @@ Know Your Flow is an app that helps women track their periods by letting them in
 
 
 ## Schema 
-[This section will be completed in Unit 9]
+
+
 ### Models
-[Add table of models]
+
+#### Post
+
+Property | Type | Description
+------------ | ------------- |  -------------
+objectId	| String	| unique id for the user post (default field)
+author	| Pointer to User	|  user
+startDate | DateTime| date user starts period 
+endDate	| DateTime	| date user ends period
+flowType	| String	| type of flow (heavy, medium, light)
+createdAt	| DateTime	| date when post is created (default field)
+updatedAt	| DateTime	| date when post is last updated (default field)
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
+- List of network requests by screen 
+* Login 
+    * (Read/GET) Query all information where user is author  
+        ```javascript
+        let query = PFQuery(className:"PeriodHistory")
+        query.whereKey("author", equalTo: currentUser)
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (periodHistory: [PFObject]?, error: Error?) in
+           if let error = error { 
+              print(error.localizedDescription)
+           } else if let periodHistories = periodHistories {
+              print("Successfully retrieved \(posts.count) posts.")
+          // TODO: Do something with posts...
+           }
+        }
+        ```
+* Registration
+    * (Create/POST) Create new user with username, password, email.  
+        ```javascript
+        PFObject *user = [PFObject objectWithClassName:@"User"];
+        gameScore[@"username"] = @"l33t";
+        gameScore[@"password"] = @"hideplease";
+        gameScore[@"email"] = @"test@temp.com";
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+          if (succeeded) {
+            // The object has been saved.
+          } else {
+            // There was a problem, check error.description
+          }
+        }];
+        ```
+
+* Home/Log
+    *  (Read/GET) Get user's profile image, name, age, email, average days between cycle, and status.  
+        ```javascript
+        let query = PFQuery(className:"PeriodHistory")
+        query.whereKey("author", equalTo: currentUser)
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (periodHistory: [PFObject]?, error: Error?) in
+           if let error = error { 
+              print(error.localizedDescription)
+           } else if let periodHistories = periodHistories {
+              print("Successfully retrieved \(posts.count) posts.")
+          // TODO: Do something with posts...
+           }
+        }
+        ``` 
+* Calendar
+    * (Read/GET) Query user's period and fertility dates on calendar.  
+        ```javascript
+        PFQuery *query = [PFQuery queryWithClassName:@"Period"];
+        [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject *period, NSError *error) {
+            // Do something with the returned PFObject in the period variable.
+            NSLog(@"%@", period);
+        }];
+        ```     
+    * (Update/PUT) Update user's period and fertility dates on calendar.
+
+        ```javascript
+        PFObject *period = [PFObject objectWithClassName:@"Period"];
+        period[@"startDate"] = @"04-19-2019";
+        period[@"endDate"] = @"04-26-2019";
+        period[@"flowType"] = @"Heavy";
+        [period saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+          if (succeeded) {
+            // The object has been saved.
+          } else {
+            // There was a problem, check error.description
+          }
+        }];
+        ```
+* History
+    * (Read/GET) Query user's period history. 
+        ```javascript
+        let query = PFQuery(className:"PeriodHistory")
+        query.whereKey("author", equalTo: currentUser)
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (periodHistory: [PFObject]?, error: Error?) in
+           if let error = error { 
+              print(error.localizedDescription)
+           } else if let periodHistories = periodHistories {
+              print("Successfully retrieved \(posts.count) posts.")
+          // TODO: Do something with posts...
+           }
+        }
+        ``` 
+* Preference
+    * (Read/GET) Query logged in user object.
+        ```javascript
+        let query = PFQuery(className:"PeriodHistory")
+        query.whereKey("author", equalTo: currentUser)
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (periodHistory: [PFObject]?, error: Error?) in
+           if let error = error { 
+              print(error.localizedDescription)
+           } else if let periodHistories = periodHistories {
+              print("Successfully retrieved \(posts.count) posts.")
+          // TODO: Do something with posts...
+           }
+        }
+        ``` 
+    * (Update/PUT) User's information (profile image, name, age, date).
+        ```javascript
+        PFQuery *query = [PFQuery queryWithClassName:@"User"];
+
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ"
+                                     block:^(PFObject *user, NSError *error) {
+            user[@"name"] = @"Edd";
+            user[@"age"] = @15;
+            user[@"date"] = @"04-01-1996"
+            user[@"profileImage"] = @"test.png";
+            [user saveInBackground];
+        }];
+        ```
+
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
