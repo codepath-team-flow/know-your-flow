@@ -124,6 +124,7 @@ updatedAt | DateTime | date when user is last updated(default field)
 username | String | username
 password | String | hidden password
 email | String | email address
+cycleAverage | Number | number of average days between cycles
 
 ### Networking
 - List of network requests by screen 
