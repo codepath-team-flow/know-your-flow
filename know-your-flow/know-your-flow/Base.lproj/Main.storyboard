@@ -91,12 +91,13 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXc-Ec-fqj">
                                 <rect key="frame" x="201" y="308" width="149" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.60241851632990873" green="0.87544953673005155" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.64351570606231689" green="0.8453676700592041" blue="0.83102566003799438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Period Just Stated">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1FR-hm-Lhc" kind="presentation" id="MrM-sn-VjZ"/>
+                                    <segue destination="GvK-cN-0a6" kind="presentation" id="sUf-eb-cZQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -240,13 +241,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period Stated:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-VP-chG">
-                                <rect key="frame" x="8" y="208" width="398" height="21"/>
+                                <rect key="frame" x="8" y="304" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mar 3, 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-1U-1Rb">
-                                <rect key="frame" x="8" y="379" width="398" height="42"/>
+                                <rect key="frame" x="8" y="345" width="398" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -258,12 +259,30 @@
                                     <!--2019-05-03 23:20:04 +0000-->
                                 </date>
                             </datePicker>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pJ-lR-CDp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="K8r-fg-vJG">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="BUm-O9-qsF">
+                                            <connections>
+                                                <action selector="onDismissButton:" destination="GvK-cN-0a6" id="mcC-em-zR5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="yzy-Gg-wFX">
+                                            <connections>
+                                                <action selector="onSubmitButton:" destination="GvK-cN-0a6" id="qWx-RQ-M8v"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qoa-1U-1Rb" firstAttribute="top" secondItem="aMi-VP-chG" secondAttribute="bottom" constant="150" id="Hhb-gB-nO7"/>
+                            <constraint firstItem="qoa-1U-1Rb" firstAttribute="top" secondItem="aMi-VP-chG" secondAttribute="bottom" constant="20" id="Hhb-gB-nO7"/>
                             <constraint firstItem="qoa-1U-1Rb" firstAttribute="leading" secondItem="1Yb-Ko-f7c" secondAttribute="leading" constant="8" id="N7m-3t-Lbr"/>
-                            <constraint firstItem="aMi-VP-chG" firstAttribute="top" secondItem="1Yb-Ko-f7c" secondAttribute="top" constant="120" id="WTX-ld-iOO"/>
+                            <constraint firstItem="aMi-VP-chG" firstAttribute="top" secondItem="1Yb-Ko-f7c" secondAttribute="top" constant="260" id="WTX-ld-iOO"/>
                             <constraint firstItem="1Yb-Ko-f7c" firstAttribute="trailing" secondItem="qoa-1U-1Rb" secondAttribute="trailing" constant="8" id="hwU-ww-KWz"/>
                             <constraint firstItem="aMi-VP-chG" firstAttribute="leading" secondItem="1Yb-Ko-f7c" secondAttribute="leading" constant="8" id="o4u-4J-7rY"/>
                             <constraint firstItem="1Yb-Ko-f7c" firstAttribute="trailing" secondItem="aMi-VP-chG" secondAttribute="trailing" constant="8" id="uXg-4l-pZj"/>
@@ -285,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YY0-Kl-ZIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4342.0289855072469" y="150.66964285714286"/>
+            <point key="canvasLocation" x="3393" y="151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uWk-ph-foK">
@@ -304,24 +323,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efo-tE-JTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="185" y="873"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="r9D-9r-sSN">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1FR-hm-Lhc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R5R-sU-l97">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GvK-cN-0a6" kind="relationship" relationship="rootViewController" id="aD0-jc-pud"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="29n-6X-X80" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3431.884057971015" y="150.66964285714286"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

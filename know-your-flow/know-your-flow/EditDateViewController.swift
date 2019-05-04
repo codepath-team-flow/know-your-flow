@@ -14,13 +14,16 @@ class EditDateViewController: UIViewController {
     @IBOutlet weak var StartDateLabel: UILabel!
  
     @IBOutlet weak var costomDatePicker: UIDatePicker!
+    
+    let dateFormatter = DateFormatter()
+    var endDateString = "Apr 3, 2019";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d,yyyy"
-        StartDateLabel.text = dateFormatter.string(from: Date())
-        
+        StartDateLabel.text = dateFormatter.string(from: costomDatePicker.date)
+        endDateString = dateFormatter.string(from: (costomDatePicker.date+5*(60*60*24)))
         //
         costomDatePicker?.datePickerMode = .date
         costomDatePicker?.addTarget(self, action: #selector(EditDateViewController.dateChanged(datePicker:)), for: .valueChanged)
@@ -30,27 +33,35 @@ class EditDateViewController: UIViewController {
     }
     
     @objc func dateChanged(datePicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
+       
         dateFormatter.dateFormat = "MMM d,yyyy"
         StartDateLabel.text = dateFormatter.string(from: datePicker.date)
+        endDateString = dateFormatter.string(from: datePicker.date+5*(60*60*24))
+        //print(datePicker.date)
+        //print(datePicker.date+5*(60*60*24))
+        //dateString = StartDateLabel.text
     }
     
     
     @IBAction func onSubmitButton(_ sender: Any) {
         let period = PFObject(className: "PeriodHistory")
-        
-        period["startDate"] = Date()
+        period["startDate"] = dateFormatter.date(from : StartDateLabel.text ?? dateFormatter.string(from: costomDatePicker.date))
+        period["endDate"] = dateFormatter.date(from : endDateString ?? dateFormatter.string(from: costomDatePicker.date))
         period["author"] = PFUser.current()
         
         period.saveInBackground { (success, error) in
             if success{
                 print("period saved")
+                self.dismiss(animated: true, completion: nil)
             }else{
                 print("error saving period")
             }
         }
     }
     
+    @IBAction func onDismissButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
