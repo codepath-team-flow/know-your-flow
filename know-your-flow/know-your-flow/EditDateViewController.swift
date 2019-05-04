@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class EditDateViewController: UIViewController {
 
@@ -35,7 +36,21 @@ class EditDateViewController: UIViewController {
     }
     
     
-
+    @IBAction func onSubmitButton(_ sender: Any) {
+        let period = PFObject(className: "PeriodHistory")
+        
+        period["startDate"] = Date()
+        period["author"] = PFUser.current()
+        
+        period.saveInBackground { (success, error) in
+            if success{
+                print("period saved")
+            }else{
+                print("error saving period")
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

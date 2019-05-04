@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zwj-0C-5GW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -240,7 +240,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period Stated:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-VP-chG">
-                                <rect key="frame" x="8" y="168" width="398" height="21"/>
+                                <rect key="frame" x="8" y="208" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -261,9 +261,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qoa-1U-1Rb" firstAttribute="top" secondItem="aMi-VP-chG" secondAttribute="bottom" constant="190" id="Hhb-gB-nO7"/>
+                            <constraint firstItem="qoa-1U-1Rb" firstAttribute="top" secondItem="aMi-VP-chG" secondAttribute="bottom" constant="150" id="Hhb-gB-nO7"/>
                             <constraint firstItem="qoa-1U-1Rb" firstAttribute="leading" secondItem="1Yb-Ko-f7c" secondAttribute="leading" constant="8" id="N7m-3t-Lbr"/>
-                            <constraint firstItem="aMi-VP-chG" firstAttribute="top" secondItem="1Yb-Ko-f7c" secondAttribute="top" constant="80" id="WTX-ld-iOO"/>
+                            <constraint firstItem="aMi-VP-chG" firstAttribute="top" secondItem="1Yb-Ko-f7c" secondAttribute="top" constant="120" id="WTX-ld-iOO"/>
                             <constraint firstItem="1Yb-Ko-f7c" firstAttribute="trailing" secondItem="qoa-1U-1Rb" secondAttribute="trailing" constant="8" id="hwU-ww-KWz"/>
                             <constraint firstItem="aMi-VP-chG" firstAttribute="leading" secondItem="1Yb-Ko-f7c" secondAttribute="leading" constant="8" id="o4u-4J-7rY"/>
                             <constraint firstItem="1Yb-Ko-f7c" firstAttribute="trailing" secondItem="aMi-VP-chG" secondAttribute="trailing" constant="8" id="uXg-4l-pZj"/>
@@ -272,7 +272,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add / Edit Start Date" id="2gV-Is-YvE">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="BrN-Sh-Ney"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="dXu-o3-xDz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="dXu-o3-xDz">
+                            <connections>
+                                <action selector="onSubmitButton:" destination="GvK-cN-0a6" id="vbh-cz-If9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="StartDateLabel" destination="qoa-1U-1Rb" id="IQi-aZ-agl"/>
