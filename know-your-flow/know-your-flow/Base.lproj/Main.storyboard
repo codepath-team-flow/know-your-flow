@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zwj-0C-5GW">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="know_your_flow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-tE-uXI">
@@ -85,8 +85,21 @@
             <objects>
                 <viewController id="SVJ-Ps-rU2" customClass="ActivityHomeViewController" customModule="know_your_flow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z3C-xq-B9C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXc-Ec-fqj">
+                                <rect key="frame" x="201" y="308" width="149" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.60241851632990873" green="0.87544953673005155" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Period Just Stated">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1FR-hm-Lhc" kind="presentation" id="MrM-sn-VjZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Qvp-FJ-wQp"/>
                     </view>
@@ -96,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a9-to-p85" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2593" y="152"/>
+            <point key="canvasLocation" x="2592.753623188406" y="151.33928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yR2-pW-mOk">
@@ -104,7 +117,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zwj-0C-5GW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4to-65-yYi">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -121,7 +134,7 @@
             <objects>
                 <viewController id="524-q6-NXl" customClass="SignUpViewController" customModule="know_your_flow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LGb-80-uMZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHy-IY-y6v">
@@ -218,13 +231,65 @@
             </objects>
             <point key="canvasLocation" x="1005.6" y="872.66009852216757"/>
         </scene>
+        <!--Add / Edit Start Date-->
+        <scene sceneID="fkb-ys-OPs">
+            <objects>
+                <viewController id="GvK-cN-0a6" customClass="EditDateViewController" customModule="know_your_flow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VuB-63-dYi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period Stated:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-VP-chG">
+                                <rect key="frame" x="8" y="168" width="398" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mar 3, 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-1U-1Rb">
+                                <rect key="frame" x="8" y="379" width="398" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y4u-7O-8AL">
+                                <rect key="frame" x="0.0" y="544" width="414" height="303"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="578618404.47345996">
+                                    <!--2019-05-03 23:20:04 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qoa-1U-1Rb" firstAttribute="top" secondItem="aMi-VP-chG" secondAttribute="bottom" constant="190" id="Hhb-gB-nO7"/>
+                            <constraint firstItem="qoa-1U-1Rb" firstAttribute="leading" secondItem="1Yb-Ko-f7c" secondAttribute="leading" constant="8" id="N7m-3t-Lbr"/>
+                            <constraint firstItem="aMi-VP-chG" firstAttribute="top" secondItem="1Yb-Ko-f7c" secondAttribute="top" constant="80" id="WTX-ld-iOO"/>
+                            <constraint firstItem="1Yb-Ko-f7c" firstAttribute="trailing" secondItem="qoa-1U-1Rb" secondAttribute="trailing" constant="8" id="hwU-ww-KWz"/>
+                            <constraint firstItem="aMi-VP-chG" firstAttribute="leading" secondItem="1Yb-Ko-f7c" secondAttribute="leading" constant="8" id="o4u-4J-7rY"/>
+                            <constraint firstItem="1Yb-Ko-f7c" firstAttribute="trailing" secondItem="aMi-VP-chG" secondAttribute="trailing" constant="8" id="uXg-4l-pZj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Yb-Ko-f7c"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add / Edit Start Date" id="2gV-Is-YvE">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="BrN-Sh-Ney"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="dXu-o3-xDz"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="StartDateLabel" destination="qoa-1U-1Rb" id="IQi-aZ-agl"/>
+                        <outlet property="costomDatePicker" destination="Y4u-7O-8AL" id="UAz-Va-5De"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YY0-Kl-ZIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4342.0289855072469" y="150.66964285714286"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="uWk-ph-foK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5i6-a1-WmX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XQp-kc-Ivz">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -236,8 +301,26 @@
             </objects>
             <point key="canvasLocation" x="185" y="873"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r9D-9r-sSN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1FR-hm-Lhc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R5R-sU-l97">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GvK-cN-0a6" kind="relationship" relationship="rootViewController" id="aD0-jc-pud"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29n-6X-X80" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3431.884057971015" y="150.66964285714286"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2M8-hR-Kpd"/>
+        <segue reference="Dei-l0-BsR"/>
     </inferredMetricsTieBreakers>
 </document>
