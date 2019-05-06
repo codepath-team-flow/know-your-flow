@@ -26,14 +26,14 @@ Know Your Flow is an app that helps women track their periods by letting them in
 
 **Required Must-have Stories**
 
-* The user will be able to log in.
-* The user will be able to log out.
-* The user will be able input their period start and end dates.
-* The user will be able to edit their inputted period start and end dates.
-* The user will be able to see how many days until their next period.
-* The user will be able to see their personal predicted period start and end dates on a calendar. 
-* The user will be able to see their personal predicted fertility start and end dates.
-*  The user will be able to check their previous history of periods.
+- [x] 1. The user will be able to log in.
+- [] 2. The user will be able to log out.
+- [x] 3. The user will be able input their start dates.
+- [] 4. The user will be able to edit their inputted period start and end dates.
+- [] 5. The user will be able to see how many days until their next period.
+- [] 6. The user will be able to see their personal predicted period start and end dates on a calendar. 
+- [] 7. The user will be able to see their personal predicted fertility start and end dates.
+- [] 8. The user will be able to check their previous history of periods.
 
 **Optional Nice-to-have Stories**
 
