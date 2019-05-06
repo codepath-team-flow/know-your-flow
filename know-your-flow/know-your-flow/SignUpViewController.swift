@@ -26,6 +26,11 @@ class SignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+   
+    @IBAction func onCancelSignUp(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func onSignUp(_ sender: Any) {
         let user = PFUser()
