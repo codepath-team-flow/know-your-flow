@@ -246,3 +246,9 @@ cycleAverage | Number | number of average days between cycles
         ```
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+* Build Progress Gifs
+   * Week1
+   <img src='http://g.recordit.co/X9pOtxjEUq.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+   
