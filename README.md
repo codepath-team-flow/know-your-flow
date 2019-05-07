@@ -36,6 +36,7 @@ http://g.recordit.co/X9pOtxjEUq.gif
 - [ ] 6. The user will be able to see their personal predicted period start and end dates on a calendar. 
 - [ ] 7. The user will be able to see their personal predicted fertility start and end dates.
 - [ ] 8. The user will be able to check their previous history of periods.
+- [x] 9. The user will be able to create a new account.
 
 **Optional Nice-to-have Stories**
 
@@ -249,6 +250,6 @@ cycleAverage | Number | number of average days between cycles
 
 * Build Progress Gifs
    * Week1
-   <img src='http://g.recordit.co/X9pOtxjEUq.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+   <img src='http://g.recordit.co/X9pOtxjEUq.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
 
    
