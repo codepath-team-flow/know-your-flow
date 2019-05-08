@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
   - Bolts/Tasks (1.9.0)
+  - FSCalendar (2.8.0)
   - Parse (1.17.2):
     - Parse/Core (= 1.17.2)
   - Parse/Core (1.17.2):
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage
+  - FSCalendar
   - Parse
 
 SPEC REPOS:
@@ -17,14 +19,16 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - FSCalendar
     - Parse
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
 
-PODFILE CHECKSUM: d6982d684325d8ec3adfa64e8a2b99dd2fcb26dd
+PODFILE CHECKSUM: b0d003ad4fc13f4069236ee3b21b245a7f36b06b
 
 COCOAPODS: 1.6.0

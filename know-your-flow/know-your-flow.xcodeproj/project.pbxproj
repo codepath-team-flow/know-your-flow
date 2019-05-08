@@ -19,6 +19,7 @@
 		BA9B4678227CAFAF0084ED7E /* know_your_flowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B4677227CAFAF0084ED7E /* know_your_flowTests.swift */; };
 		BA9B4683227CAFAF0084ED7E /* know_your_flowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B4682227CAFAF0084ED7E /* know_your_flowUITests.swift */; };
 		C590CE7F227D0A67006763A4 /* EditDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C590CE7E227D0A67006763A4 /* EditDateViewController.swift */; };
+		C5ED5615228278A5000D5C56 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ED5614228278A5000D5C56 /* CalendarViewController.swift */; };
 		FDB0CF8B674517A15EEE0E20 /* Pods_know_your_flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472CF5B947FFB1A30C75AC34 /* Pods_know_your_flow.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		BA9B4682227CAFAF0084ED7E /* know_your_flowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = know_your_flowUITests.swift; sourceTree = "<group>"; };
 		BA9B4684227CAFAF0084ED7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C590CE7E227D0A67006763A4 /* EditDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateViewController.swift; sourceTree = "<group>"; };
+		C5ED5614228278A5000D5C56 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		D1284C655A7252F9F05D09E3 /* Pods-know-your-flow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-know-your-flow.debug.xcconfig"; path = "Target Support Files/Pods-know-your-flow/Pods-know-your-flow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 				BA47ACA1227CB55D00047371 /* SignUpViewController.swift */,
 				BA47ACA3227CB59300047371 /* ActivityHomeViewController.swift */,
 				C590CE7E227D0A67006763A4 /* EditDateViewController.swift */,
+				C5ED5614228278A5000D5C56 /* CalendarViewController.swift */,
 			);
 			path = "know-your-flow";
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -392,6 +396,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5ED5615228278A5000D5C56 /* CalendarViewController.swift in Sources */,
 				BA47ACA4227CB59300047371 /* ActivityHomeViewController.swift in Sources */,
 				C590CE7F227D0A67006763A4 /* EditDateViewController.swift in Sources */,
 				BA47ACA2227CB55D00047371 /* SignUpViewController.swift in Sources */,

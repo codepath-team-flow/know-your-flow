@@ -8,6 +8,7 @@ target 'know-your-flow' do
   # Pods for know-your-flow
   pod "Parse"
   pod "AlamofireImage"
+  pod "FSCalendar"
 
   target 'know-your-flowTests' do
     inherit! :search_paths
