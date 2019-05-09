@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Parse
 
 class ActivityHomeViewController: UIViewController {
 
+    @IBOutlet weak var LastPeriodLabel: UILabel!
+    
+    let dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+ 
         // Do any additional setup after loading the view.
     }
     
@@ -26,5 +31,22 @@ class ActivityHomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func viewDidAppear(_ animated: Bool) {
+        let query = PFQuery(className: "PeriodHistory")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.order(byDescending: "startDate")
+        query.findObjectsInBackground{
+            (records, error) in
+            if records != nil {
+                let firstRecord = records?.first
+                self.dateFormatter.dateFormat = "MMM d, yyyy"
+                let lastDate = self.dateFormatter.string(for: firstRecord?["startDate"])
+                print(lastDate)
+                self.LastPeriodLabel.text = lastDate
+            }
+        }
+        
+    }
 
 }

@@ -21,7 +21,7 @@ class EditDateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateFormatter.dateFormat = "MMM d,yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: costomDatePicker.date)
         endDateString = dateFormatter.string(from: (costomDatePicker.date+5*(60*60*24)))
         //
@@ -34,7 +34,7 @@ class EditDateViewController: UIViewController {
     
     @objc func dateChanged(datePicker: UIDatePicker){
        
-        dateFormatter.dateFormat = "MMM d,yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: datePicker.date)
         endDateString = dateFormatter.string(from: datePicker.date+5*(60*60*24))
         //print(datePicker.date)
