@@ -60,7 +60,7 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dr1-bM-gnJ"/>
-                                    <segue destination="5i6-a1-WmX" kind="presentation" identifier="toSignUpPageSegue" id="LO3-cJ-6Zu"/>
+                                    <segue destination="5i6-a1-WmX" kind="presentation" identifier="toSignUpSegue" id="aAW-7X-HGV"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZl-K2-ge5">
