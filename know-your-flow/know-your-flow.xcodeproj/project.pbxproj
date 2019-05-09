@@ -12,6 +12,7 @@
 		BA47AC9E227CB27400047371 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47AC9D227CB27400047371 /* LoginViewController.swift */; };
 		BA47ACA2227CB55D00047371 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47ACA1227CB55D00047371 /* SignUpViewController.swift */; };
 		BA47ACA4227CB59300047371 /* ActivityHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47ACA3227CB59300047371 /* ActivityHomeViewController.swift */; };
+		BA7B8EA62283E5B90068C033 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7B8EA52283E5B90068C033 /* PreferencesViewController.swift */; };
 		BA9B4663227CAFAD0084ED7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B4662227CAFAD0084ED7E /* AppDelegate.swift */; };
 		BA9B4668227CAFAD0084ED7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9B4666227CAFAD0084ED7E /* Main.storyboard */; };
 		BA9B466A227CAFAF0084ED7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9B4669227CAFAF0084ED7E /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		BA47AC9D227CB27400047371 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BA47ACA1227CB55D00047371 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA47ACA3227CB59300047371 /* ActivityHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHomeViewController.swift; sourceTree = "<group>"; };
+		BA7B8EA52283E5B90068C033 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		BA9B465F227CAFAD0084ED7E /* know-your-flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "know-your-flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9B4662227CAFAD0084ED7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA9B4667227CAFAD0084ED7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				BA47ACA3227CB59300047371 /* ActivityHomeViewController.swift */,
 				C590CE7E227D0A67006763A4 /* EditDateViewController.swift */,
 				C5ED5614228278A5000D5C56 /* CalendarViewController.swift */,
+				BA7B8EA52283E5B90068C033 /* PreferencesViewController.swift */,
 			);
 			path = "know-your-flow";
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				C590CE7F227D0A67006763A4 /* EditDateViewController.swift in Sources */,
 				BA47ACA2227CB55D00047371 /* SignUpViewController.swift in Sources */,
 				BA47AC9E227CB27400047371 /* LoginViewController.swift in Sources */,
+				BA7B8EA62283E5B90068C033 /* PreferencesViewController.swift in Sources */,
 				BA9B4663227CAFAD0084ED7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

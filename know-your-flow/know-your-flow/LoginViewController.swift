@@ -20,11 +20,10 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onSignUp(_ sender: Any) {
-        self.performSegue(withIdentifier: "toSignUpPageSegue", sender: nil)
-    }
-    
-    
+//    @IBAction func onSignUp(_ sender: Any) {
+//        self.performSegue(withIdentifier: "toSignUpPageSegue", sender: nil)
+//    }
+
     @IBAction func onSignIn(_ sender: Any) {
         let username = usernameField.text!
         let password = passwordField.text!
@@ -38,7 +37,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     
 
     /*
