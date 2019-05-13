@@ -21,6 +21,10 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var usernameField: UITextField!
     
+    @IBOutlet weak var averageDaysinPeriodField: UITextField!
+    
+    @IBOutlet weak var averageDaysBtwnPeriodField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +43,8 @@ class SignUpViewController: UIViewController {
         user.password = passwordField.text
         user["age"] = ageField.text
         user["name"] = nameField.text
+        user["averageDaysinPeriod"] = averageDaysinPeriodField.text
+        user["averageDaysBtwnPeriod"] = averageDaysBtwnPeriodField.text
         
         user.signUpInBackground { (success, error) in
             if success {
