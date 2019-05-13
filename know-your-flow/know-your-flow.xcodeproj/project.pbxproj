@@ -20,6 +20,7 @@
 		BA9B466D227CAFAF0084ED7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9B466B227CAFAF0084ED7E /* LaunchScreen.storyboard */; };
 		BA9B4678227CAFAF0084ED7E /* know_your_flowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B4677227CAFAF0084ED7E /* know_your_flowTests.swift */; };
 		BA9B4683227CAFAF0084ED7E /* know_your_flowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B4682227CAFAF0084ED7E /* know_your_flowUITests.swift */; };
+		C5040E0E2289D695002735AF /* PeriodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5040E0D2289D695002735AF /* PeriodDetailViewController.swift */; };
 		C590CE7F227D0A67006763A4 /* EditDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C590CE7E227D0A67006763A4 /* EditDateViewController.swift */; };
 		C5ED5615228278A5000D5C56 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ED5614228278A5000D5C56 /* CalendarViewController.swift */; };
 		C5F403112283BFA200C4B67D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F403102283BFA200C4B67D /* HistoryViewController.swift */; };
@@ -69,6 +70,7 @@
 		BA9B467E227CAFAF0084ED7E /* know-your-flowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "know-your-flowUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9B4682227CAFAF0084ED7E /* know_your_flowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = know_your_flowUITests.swift; sourceTree = "<group>"; };
 		BA9B4684227CAFAF0084ED7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5040E0D2289D695002735AF /* PeriodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDetailViewController.swift; sourceTree = "<group>"; };
 		C590CE7E227D0A67006763A4 /* EditDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateViewController.swift; sourceTree = "<group>"; };
 		C5ED5614228278A5000D5C56 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C5F403102283BFA200C4B67D /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				C5ED5614228278A5000D5C56 /* CalendarViewController.swift */,
 				C5F403102283BFA200C4B67D /* HistoryViewController.swift */,
 				BA7B8EA52283E5B90068C033 /* PreferencesViewController.swift */,
+				C5040E0D2289D695002735AF /* PeriodDetailViewController.swift */,
 			);
 			path = "know-your-flow";
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			files = (
 				C5ED5615228278A5000D5C56 /* CalendarViewController.swift in Sources */,
 				BA47ACA4227CB59300047371 /* ActivityHomeViewController.swift in Sources */,
+				C5040E0E2289D695002735AF /* PeriodDetailViewController.swift in Sources */,
 				C590CE7F227D0A67006763A4 /* EditDateViewController.swift in Sources */,
 				BA47ACA2227CB55D00047371 /* SignUpViewController.swift in Sources */,
 				BA47AC9E227CB27400047371 /* LoginViewController.swift in Sources */,

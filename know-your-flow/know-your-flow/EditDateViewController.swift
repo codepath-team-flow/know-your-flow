@@ -31,7 +31,7 @@ class EditDateViewController: UIViewController {
         costomDatePicker?.addTarget(self, action: #selector(EditDateViewController.dateChanged(datePicker:)), for: .valueChanged)
         
 
-        // Do any additional setup after loading the view.
+
     }
     
     @objc func dateChanged(datePicker: UIDatePicker){
@@ -50,6 +50,7 @@ class EditDateViewController: UIViewController {
         period["startDate"] = dateFormatter.date(from : StartDateLabel.text ?? dateFormatter.string(from: costomDatePicker.date))
         period["endDate"] = dateFormatter.date(from : endDateString ?? dateFormatter.string(from: costomDatePicker.date))
         period["author"] = PFUser.current()
+        
         
 //        //get difference between start and end date
 //        let dateRangeStart = period["startDate"]
@@ -71,14 +72,15 @@ class EditDateViewController: UIViewController {
     @IBAction func onDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // for calculating length, find last period start date.
+    func findLastPeriodStartDate(date: Date){
+        
     }
-    */
+    
+    // check if there exist a next period record.
+    func findNextPeriodStartDate(){
+        
+    }
 
 }
