@@ -27,8 +27,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         calendar.appearance.borderRadius = 0
         calendar.appearance.headerMinimumDissolvedAlpha = 0
+
+//        calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
         
-        
+        // append event date to array
         let query = PFQuery(className: "PeriodHistory")
         query.includeKey("author")
         query.whereKey("author", equalTo: PFUser.current())
@@ -46,18 +48,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             }
             
         }
+    }
       
         
-       
-
-//        calendar.target(forAction: #selector(CalendarViewController.didChanged(selectedDate:)), withSender: Any?.self)
-   
-        
-    }
-//
-//    @objc func didChanged(selectedDate: NSDate){
-//
-//    }
 
     /*
     // MARK: - Navigation
@@ -68,27 +61,37 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         // Pass the selected object to the new view controller.
     }
     */
+    
+// Change subtitle of cell
 //    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
 //        if (calendar.today==date) {
 //            return "today";
 //        }
 //        return nil
 //    }
-//
-//
-//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+
+
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if eventDays.contains(date){
+            return 1
+        }
+        return 0
+    }
+
+// Change image of cell
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
 //        if eventDays.contains(date){
-//            return 1
+//
+//            return UIImage(named: "pink-horizontal-line")
 //        }
-//        return 0
+//        return nil
 //    }
+    
+// Register Cell
 //    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
 //
 //        let cell = calendar.dequeueReusableCell(withIdentifier: "CELL", for: date, at: position)
-//        if eventDays.contains(date){
-//
-//            cell.isSelected = true
-//        }
+//        cell.imageView.contentMode = .scaleAspectFit
 //        return cell
 //    }
     
