@@ -10,6 +10,8 @@ import UIKit
 
 class PeriodHistoryCell: UITableViewCell {
 
+    @IBOutlet weak var firstDayLabel: UILabel!
+    @IBOutlet weak var lengthLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

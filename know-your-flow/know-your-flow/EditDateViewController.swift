@@ -16,6 +16,8 @@ class EditDateViewController: UIViewController {
     @IBOutlet weak var costomDatePicker: UIDatePicker!
     
     let dateFormatter = DateFormatter()
+    let componentsFormatter = DateComponentsFormatter()
+    
     var endDateString = "Apr 3, 2019";
     
     override func viewDidLoad() {
@@ -48,6 +50,13 @@ class EditDateViewController: UIViewController {
         period["startDate"] = dateFormatter.date(from : StartDateLabel.text ?? dateFormatter.string(from: costomDatePicker.date))
         period["endDate"] = dateFormatter.date(from : endDateString ?? dateFormatter.string(from: costomDatePicker.date))
         period["author"] = PFUser.current()
+        
+//        //get difference between start and end date
+//        let dateRangeStart = period["startDate"]
+//        let dateRangeEnd = period["endDate"]
+//        componentsFormatter.allowedUnits = [.day]
+//        componentsFormatter.unitsStyle = .full
+//        period["periodLength"] = componentsFormatter.string(from: dateRangeStart as! Date, to: dateRangeEnd as! Date)
         
         period.saveInBackground { (success, error) in
             if success{
