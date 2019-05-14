@@ -255,7 +255,7 @@ cycleAverage | Number | number of average days between cycles
    
    * Week 2
    <img src='http://g.recordit.co/2UNU7JsLHo.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
-   
+   <img src='<img src='http://g.recordit.co/2UNU7JsLHo.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
 
 
    
