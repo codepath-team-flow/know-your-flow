@@ -31,11 +31,11 @@ http://g.recordit.co/stlYAuHg7y.gif
 - [ ] 2. The user will be able to log out.
 - [x] 3. The user will be able input their start dates.
 http://g.recordit.co/XF7DMYWcCh.gif
-- [ ] 4. The user will be able to edit their inputted period start and end dates.
+- [ x] 4. The user will be able to edit their inputted period start and end dates. http://g.recordit.co/A8m7i4M2rH.gif
 - [ ] 5. The user will be able to see how many days until their next period.
 - [ ] 6. The user will be able to see their personal predicted period start and end dates on a calendar. 
 - [ ] 7. The user will be able to see their personal predicted fertility start and end dates.
-- [ ] 8. The user will be able to check their previous history of periods.
+- [x ] 8. The user will be able to check their previous history of periods. http://g.recordit.co/A8m7i4M2rH.gif
 - [x] 9. The user will be able to create a new account.
 http://g.recordit.co/XF7DMYWcCh.gif
 
