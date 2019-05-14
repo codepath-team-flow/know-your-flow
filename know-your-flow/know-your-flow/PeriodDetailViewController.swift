@@ -73,13 +73,19 @@ class PeriodDetailViewController: UIViewController {
                 period!.saveInBackground { (success, error) in
                     if success{
                         print("period edited and saved")
-                        self.navigationController?.popToRootViewController(animated: true)
+//                        self.navigationController?.popToRootViewController(animated: true)
+                        self.dismiss(animated: true, completion: nil)
                     }else{
                         print("error editing period")
                     }
                 }
             }
         }
+    }
+    
+    
+    @IBAction func onBackButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 

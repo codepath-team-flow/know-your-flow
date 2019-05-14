@@ -318,8 +318,17 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="rRi-1U-ZMv">
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="eL7-XB-hFD"/>
+                                    <navigationItem title="Edit Dates" id="rRi-1U-ZMv">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; History" id="iiP-YW-EqC">
+                                            <connections>
+                                                <action selector="onBackButton:" destination="VCz-0T-iMG" id="Fa0-s9-wos"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="eL7-XB-hFD">
+                                            <connections>
+                                                <action selector="onSubmitButton:" destination="VCz-0T-iMG" id="vv5-mi-lLF"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -337,14 +346,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3f-1Z-qSb">
-                                <rect key="frame" x="354" y="88" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="onSubmitButton:" destination="VCz-0T-iMG" eventType="touchUpInside" id="ddt-JB-jdx"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MMM dd, yyyy" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wrv-nw-qIZ">
                                 <rect key="frame" x="111" y="258" width="277" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -507,7 +508,7 @@
                                         <connections>
                                             <outlet property="firstDayLabel" destination="5Pu-gn-zQe" id="nlc-sg-eHp"/>
                                             <outlet property="lengthLabel" destination="ILC-hQ-WGZ" id="3JL-6I-gyH"/>
-                                            <segue destination="VCz-0T-iMG" kind="show" id="xsK-q0-SYa"/>
+                                            <segue destination="VCz-0T-iMG" kind="showDetail" id="xsK-q0-SYa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
