@@ -10,9 +10,9 @@ import UIKit
 import Parse
 
 class EditDateViewController: UIViewController {
-
+    
     @IBOutlet weak var StartDateLabel: UILabel!
- 
+    
     @IBOutlet weak var costomDatePicker: UIDatePicker!
     
     let dateFormatter = DateFormatter()
@@ -33,16 +33,16 @@ class EditDateViewController: UIViewController {
         costomDatePicker?.addTarget(self, action: #selector(EditDateViewController.dateChanged(datePicker:)), for: .valueChanged)
         
         queryHistory()
-
-
+        
+        
     }
     
     @objc func dateChanged(datePicker: UIDatePicker){
-       
+        
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: datePicker.date)
         endDateString = dateFormatter.string(from: datePicker.date+5*(60*60*24))
-       
+        
     }
     
     
@@ -70,7 +70,7 @@ class EditDateViewController: UIViewController {
         }
         
         averageLength = calcAverage(count: self.periodHistory.count, newNumberOfDays: period["daysBetweenPeriod"] as! Int)
-       
+        
         //TODO: handle new entry is in between data
         
         predictedDate = (period["startDate"] as! Date) + TimeInterval(averageLength*60*60*24)
@@ -78,12 +78,12 @@ class EditDateViewController: UIViewController {
         //save predictedDate TODO: discuss where to save this
         period["predictedDate"] = predictedDate
         
-//        //get difference between start and end date
-//        let dateRangeStart = period["startDate"]
-//        let dateRangeEnd = period["endDate"]
-//        componentsFormatter.allowedUnits = [.day]
-//        componentsFormatter.unitsStyle = .full
-//        period["periodLength"] = componentsFormatter.string(from: dateRangeStart as! Date, to: dateRangeEnd as! Date)
+        //        //get difference between start and end date
+        //        let dateRangeStart = period["startDate"]
+        //        let dateRangeEnd = period["endDate"]
+        //        componentsFormatter.allowedUnits = [.day]
+        //        componentsFormatter.unitsStyle = .full
+        //        period["periodLength"] = componentsFormatter.string(from: dateRangeStart as! Date, to: dateRangeEnd as! Date)
         
         period.saveInBackground { (success, error) in
             if success{
@@ -99,26 +99,26 @@ class EditDateViewController: UIViewController {
     
     func calcAverage(count: Int, newNumberOfDays: Int) -> Int{
         //TODO: handle new entry is in between data
-//if count < 6, then add differences of what we have, devided by count.
+        //if count < 6, then add differences of what we have, devided by count.
         var total = 0
         if(count < 6){
             for period in self.periodHistory {
                 total += (period["daysBetweenPeriod"] as! Int)
             }
-
+            
             return (total+newNumberOfDays) / (count + 1)
         }
         else{
-//else: add the differences of the last 6, devide by 6
+            //else: add the differences of the last 6, devide by 6
             var counter = 6
             while(counter > 0){
                 total += self.periodHistory[counter - 1]["daysBetweenPeriod"] as! Int
                 counter -= 1
             }
             return (total+newNumberOfDays) / (6 + 1)
-
+            
         }
-
+        
     }
     
     @IBAction func onDismissButton(_ sender: Any) {
@@ -164,8 +164,8 @@ class EditDateViewController: UIViewController {
     }
     
     // check if there exist a next period record.
-//    func findNextPeriodStartDate(){
-//        
-//    }
-
+    //    func findNextPeriodStartDate(){
+    //
+    //    }
+    
 }
