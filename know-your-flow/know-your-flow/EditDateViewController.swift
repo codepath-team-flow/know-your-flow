@@ -17,8 +17,10 @@ class EditDateViewController: UIViewController {
     
     let dateFormatter = DateFormatter()
     let componentsFormatter = DateComponentsFormatter()
-    
     var endDateString = "Apr 3, 2019";
+    var periodHistory = [PFObject]()
+    var averageLength = 28
+    var predictedDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,11 @@ class EditDateViewController: UIViewController {
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: costomDatePicker.date)
         endDateString = dateFormatter.string(from: (costomDatePicker.date+5*(60*60*24)))
-        //
+        
         costomDatePicker?.datePickerMode = .date
         costomDatePicker?.addTarget(self, action: #selector(EditDateViewController.dateChanged(datePicker:)), for: .valueChanged)
         
+        queryHistory()
 
 
     }
@@ -39,18 +42,41 @@ class EditDateViewController: UIViewController {
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: datePicker.date)
         endDateString = dateFormatter.string(from: datePicker.date+5*(60*60*24))
-        //print(datePicker.date)
-        //print(datePicker.date+5*(60*60*24))
-        //dateString = StartDateLabel.text
+       
     }
     
     
     @IBAction func onSubmitButton(_ sender: Any) {
+        
+        
+        
         let period = PFObject(className: "PeriodHistory")
         period["startDate"] = dateFormatter.date(from : StartDateLabel.text ?? dateFormatter.string(from: costomDatePicker.date))
         period["endDate"] = dateFormatter.date(from : endDateString ?? dateFormatter.string(from: costomDatePicker.date))
         period["author"] = PFUser.current()
         
+        
+        if(self.periodHistory.count == 0){
+            period["daysBetweenPeriod"] = 28
+        }else{
+            let lastStartDate = findLastPeriodStartDate(date: period["startDate"] as! Date)
+            print("lastStartDate")
+            print(lastStartDate)
+            
+            let difference = (period["startDate"] as! Date).timeIntervalSince(lastStartDate as! Date)
+            
+            period["daysBetweenPeriod"] = Int(difference)/60/60/24
+            
+        }
+        
+        averageLength = calcAverage(count: self.periodHistory.count, newNumberOfDays: period["daysBetweenPeriod"] as! Int)
+       
+        //TODO: handle new entry is in between data
+        
+        predictedDate = (period["startDate"] as! Date) + TimeInterval(averageLength*60*60*24)
+        
+        //save predictedDate TODO: discuss where to save this
+        period["predictedDate"] = predictedDate
         
 //        //get difference between start and end date
 //        let dateRangeStart = period["startDate"]
@@ -67,20 +93,79 @@ class EditDateViewController: UIViewController {
                 print("error saving period")
             }
         }
+        
+        
+    }
+    
+    func calcAverage(count: Int, newNumberOfDays: Int) -> Int{
+        //TODO: handle new entry is in between data
+//if count < 6, then add differences of what we have, devided by count.
+        var total = 0
+        if(count < 6){
+            for period in self.periodHistory {
+                total += (period["daysBetweenPeriod"] as! Int)
+            }
+
+            return (total+newNumberOfDays) / (count + 1)
+        }
+        else{
+//else: add the differences of the last 6, devide by 6
+            var counter = 6
+            while(counter > 0){
+                total += self.periodHistory[counter - 1]["daysBetweenPeriod"] as! Int
+                counter -= 1
+            }
+            return (total+newNumberOfDays) / (6 + 1)
+
+        }
+
     }
     
     @IBAction func onDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func queryHistory(){
+        let query = PFQuery(className: "PeriodHistory")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.order(byAscending: "startDate")
+        query.findObjectsInBackground{
+            (records, error) in
+            if records != nil {
+                self.periodHistory = records!
+            }
+        }
+    }
+    
     // for calculating length, find last period start date.
-    func findLastPeriodStartDate(date: Date){
+    func findLastPeriodStartDate(date: Date) -> Date {
+        let lastStartDate: Date
+        let newEntry = date
+        var count = periodHistory.count
+        var curr = periodHistory[count - 1]["startDate"] as! Date
+        print("curr")
+        print("newEntry")
+        print(newEntry)
+        if(count == 1){
+            return curr
+        }else{
+            while(curr >= newEntry ){
+                count -= 1
+                curr = periodHistory[count-1]["startDate"] as! Date
+                
+                //TODO:handle exception, overflow
+            }
+        }
         
+        print("last period startdate")
+        print(curr)
+        return curr
     }
     
     // check if there exist a next period record.
-    func findNextPeriodStartDate(){
-        
-    }
+//    func findNextPeriodStartDate(){
+//        
+//    }
 
 }

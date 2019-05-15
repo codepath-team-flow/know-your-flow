@@ -12,6 +12,10 @@ import Parse
 class ActivityHomeViewController: UIViewController {
 
     @IBOutlet weak var LastPeriodLabel: UILabel!
+    @IBOutlet weak var predictedDateLabel: UILabel!
+    @IBOutlet weak var NumberOfDaysLabel: UILabel!
+    @IBOutlet weak var leftOrLateLabel: UILabel!
+    
     
     let dateFormatter = DateFormatter()
     override func viewDidLoad() {
@@ -44,6 +48,19 @@ class ActivityHomeViewController: UIViewController {
                 let lastDate = self.dateFormatter.string(for: firstRecord?["startDate"])
                 print(lastDate)
                 self.LastPeriodLabel.text = lastDate
+                let predictedDate = self.dateFormatter.string(for: firstRecord?["predictedDate"])
+                self.predictedDateLabel.text = predictedDate
+                let numberOfDays = Int((firstRecord!["predictedDate"] as! Date).timeIntervalSince(Date()))/60/60/24
+                
+                if(numberOfDays>=0){
+                    self.NumberOfDaysLabel.text = String(numberOfDays)
+                    self.leftOrLateLabel.text = "Days Left"
+                }else{
+                    self.NumberOfDaysLabel.text = String(-1 * numberOfDays)
+                    self.leftOrLateLabel.text = "Days Late"
+                    
+                }
+                
             }
         }
         
