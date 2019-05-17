@@ -43,23 +43,35 @@ class ActivityHomeViewController: UIViewController {
         query.findObjectsInBackground{
             (records, error) in
             if records != nil {
-                let firstRecord = records?.first
-                self.dateFormatter.dateFormat = "MMM d, yyyy"
-                let lastDate = self.dateFormatter.string(for: firstRecord?["startDate"])
-                print(lastDate)
-                self.LastPeriodLabel.text = lastDate
-                let predictedDate = self.dateFormatter.string(for: firstRecord?["predictedDate"])
-                self.predictedDateLabel.text = predictedDate
-                let numberOfDays = Int((firstRecord!["predictedDate"] as! Date).timeIntervalSince(Date()))/60/60/24
-                
-                if(numberOfDays>=0){
-                    self.NumberOfDaysLabel.text = String(numberOfDays)
+                if(records!.count == 0){
+                    self.LastPeriodLabel.text = "--"
+                    self.NumberOfDaysLabel.text = "--"
+                    self.predictedDateLabel.text = "--"
                     self.leftOrLateLabel.text = "Days Left"
-                }else{
-                    self.NumberOfDaysLabel.text = String(-1 * numberOfDays)
-                    self.leftOrLateLabel.text = "Days Late"
                     
+                }else{
+                    let firstRecord = records?.first
+                    self.dateFormatter.dateFormat = "MMM d, yyyy"
+                    let lastDate = self.dateFormatter.string(for: firstRecord?["startDate"])
+                    print(lastDate)
+                    self.LastPeriodLabel.text = lastDate
+                    let predictedDate = self.dateFormatter.string(for: firstRecord?["predictedDate"])
+                    self.predictedDateLabel.text = predictedDate
+                    let numberOfDays = Int((firstRecord!["predictedDate"] as! Date).timeIntervalSince(Date()))/60/60/24
+                    
+                    if(numberOfDays>=0){
+                        self.NumberOfDaysLabel.text = String(numberOfDays)
+                        self.leftOrLateLabel.text = "Days Left"
+                    }else{
+                        self.NumberOfDaysLabel.text = String(-1 * numberOfDays)
+                        self.leftOrLateLabel.text = "Days Late"
+                        
+                    }
                 }
+                
+                
+            }else{
+                print("error finding record")
                 
             }
         }
