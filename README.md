@@ -8,6 +8,7 @@ Group Project - Milestone 1 README
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
+2. [Build Progress Gifs](#Build-Progress-Gifs
 
 ## Overview
 ### Description
