@@ -57,6 +57,7 @@ class EditDateViewController: UIViewController {
         
         
         if(self.periodHistory.count == 0){
+            //TODO: first check if user entered their average at sign up. if not set to 28
             period["daysBetweenPeriod"] = 28
         }else{
             let lastStartDate = findLastPeriodStartDate(date: period["startDate"] as! Date)

@@ -15,8 +15,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 //    fileprivate weak var calendar: FSCalendar!
     
     @IBOutlet weak var calendar: FSCalendar!
-    
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var selectedDateLabel: UILabel!
+
     let dateFormatter = DateFormatter()
     var eventDays = [Date]()
     

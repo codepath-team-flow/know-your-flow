@@ -11,6 +11,7 @@ import Parse
 
 class ActivityHomeViewController: UIViewController {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var LastPeriodLabel: UILabel!
     @IBOutlet weak var predictedDateLabel: UILabel!
     @IBOutlet weak var NumberOfDaysLabel: UILabel!
@@ -20,6 +21,7 @@ class ActivityHomeViewController: UIViewController {
     let dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
+        containerView.layer.cornerRadius = 10
 
  
         // Do any additional setup after loading the view.

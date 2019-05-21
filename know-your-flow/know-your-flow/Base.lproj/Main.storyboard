@@ -109,8 +109,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg5" translatesAutoresizingMaskIntoConstraints="NO" id="49u-hg-qrW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days Left/Late" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UV-Sn-GLj">
+                                <rect key="frame" x="151" y="198" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NUM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P3-5F-HAR">
+                                <rect key="frame" x="151" y="130" width="113" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXc-Ec-fqj">
-                                <rect key="frame" x="201" y="308" width="149" height="60"/>
+                                <rect key="frame" x="133" y="242" width="149" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.64351570606231689" green="0.8453676700592041" blue="0.83102566003799438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -121,48 +139,37 @@
                                     <segue destination="GvK-cN-0a6" kind="presentation" id="sUf-eb-cZQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Period Startdate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUg-Jm-Sb6">
-                                <rect key="frame" x="201" y="144" width="193" height="21"/>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MuI-QJ-h4q">
+                                <rect key="frame" x="87" y="405" width="240" height="266"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMM dd, yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3V-a1-S0f">
-                                <rect key="frame" x="201" y="173" width="193" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Projected Startdate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hl-0F-ikA">
-                                <rect key="frame" x="201" y="215" width="150" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMM dd, yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWo-nt-hEY">
-                                <rect key="frame" x="201" y="254" width="120" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days Left/Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UV-Sn-GLj">
-                                <rect key="frame" x="34" y="252" width="111" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P3-5F-HAR">
-                                <rect key="frame" x="34" y="183" width="113" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMM dd, yyyy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3V-a1-S0f">
+                                        <rect key="frame" x="23" y="90" width="193" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Projected Startdate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hl-0F-ikA">
+                                        <rect key="frame" x="24" y="142" width="193" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Period Startdate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUg-Jm-Sb6">
+                                        <rect key="frame" x="23" y="50" width="193" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMM dd, yyyy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWo-nt-hEY">
+                                        <rect key="frame" x="24" y="202" width="193" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Qvp-FJ-wQp"/>
@@ -173,19 +180,20 @@
                     <connections>
                         <outlet property="LastPeriodLabel" destination="p3V-a1-S0f" id="AN3-mj-Y8j"/>
                         <outlet property="NumberOfDaysLabel" destination="0P3-5F-HAR" id="fEX-Qm-O4q"/>
+                        <outlet property="containerView" destination="MuI-QJ-h4q" id="xAY-Az-plj"/>
                         <outlet property="leftOrLateLabel" destination="3UV-Sn-GLj" id="Ohf-V8-yX1"/>
                         <outlet property="predictedDateLabel" destination="mWo-nt-hEY" id="h7x-OS-9ty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a9-to-p85" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1286" y="923"/>
+            <point key="canvasLocation" x="1285.5072463768117" y="922.76785714285711"/>
         </scene>
         <!--Activity-->
         <scene sceneID="yR2-pW-mOk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zwj-0C-5GW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activity" id="Qqs-zj-khy"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="home" id="Qqs-zj-khy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4to-65-yYi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -591,6 +599,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMM dd, yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX1-6O-E4j">
+                                <rect key="frame" x="186" y="548" width="208" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -603,7 +618,7 @@
                     <navigationItem key="navigationItem" title="Calendar" id="O7j-WC-XhM"/>
                     <connections>
                         <outlet property="calendar" destination="Eug-Of-oNP" id="9ZF-Sz-6bM"/>
-                        <outlet property="dateLabel" destination="5rK-QT-J0Z" id="Wt5-Ub-2Te"/>
+                        <outlet property="selectedDateLabel" destination="bX1-6O-E4j" id="gYy-9j-K97"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRt-YM-1Fi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,7 +647,7 @@
         <scene sceneID="qHR-Q2-2b1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HVb-8N-Tpw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="7rf-yw-1I5"/>
+                    <tabBarItem key="tabBarItem" title="History" image="history" id="7rf-yw-1I5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ios-T7-0M0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -651,7 +666,7 @@
         <scene sceneID="XYk-gZ-rC0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2zX-wI-BR7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" id="ouX-8f-gCG"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="event-1" id="ouX-8f-gCG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H8J-e0-viN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -692,7 +707,7 @@
         <scene sceneID="EMt-NZ-olE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mvt-2D-nng" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Preferences" id="dr0-Cc-HSB"/>
+                    <tabBarItem key="tabBarItem" title="Preferences" image="preference" id="dr0-Cc-HSB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ad-vv-Koh">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -708,7 +723,14 @@
             <point key="canvasLocation" x="3424.6376811594205" y="140.625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg5" width="564" height="1015"/>
+        <image name="event-1" width="24" height="24"/>
+        <image name="history" width="24" height="24"/>
+        <image name="home" width="24" height="24"/>
+        <image name="preference" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CJ8-uN-BSE"/>
+        <segue reference="RPk-Tf-U0d"/>
     </inferredMetricsTieBreakers>
 </document>
