@@ -5,19 +5,46 @@
 //  Created by Debbie Vo on 5/8/19.
 //  Copyright © 2019 debbienvo. All rights reserved.
 //
+//  User Placeholder Image credited to Appalachian College Association
+//  https://acaweb.org/profile-placeholder/
+
 
 import UIKit
 import Parse
+import AlamofireImage
 
-class PreferencesViewController: UIViewController {
+class PreferencesViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var ageLabel: UILabel!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    let preferences = PFObject(className: "Preferences")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-    }
-    
+//        let query = PFQuery(className: "User")
+//        query.includeKey("author")
+//        query.whereKey("author", equalTo: PFUser.current())
+        nameLabel.text = PFUser.current()?["name"] as! String
+        ageLabel.text = PFUser.current()?["age"] as! String
+//        
+//        let imageFile = preferences["image"] as! PFFileObject
+//        let urlString = imageFile.url!
+//        let url = URL(string: urlString)!
+//        imageView.af_setImage(withURL: url)
+        
 
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -28,6 +55,46 @@ class PreferencesViewController: UIViewController {
     }
     */
 
+    
+    @IBAction func onProfileButton(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+        let size = CGSize(width: 188, height: 188)
+        let scaledImage = image.af_imageScaled(to: size)
+        imageView.image = scaledImage
+        
+        
+        preferences["author"] = PFUser.current()!
+        let imageData = imageView.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        preferences["profileImage"] = file
+        preferences.saveInBackground { (success, error) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+                print("Saved Image in DB")
+            } else {
+                print("Error")
+            }
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
         let main = UIStoryboard(name: "Main", bundle: nil)

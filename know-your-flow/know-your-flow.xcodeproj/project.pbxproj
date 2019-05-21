@@ -10,6 +10,7 @@
 		04A91824F40168011C1576E1 /* Pods_know_your_flowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0166B074454B00A0B3BB89 /* Pods_know_your_flowTests.framework */; };
 		45619E252289484B00153BEA /* PeriodHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45619E242289484A00153BEA /* PeriodHistoryCell.swift */; };
 		8D366D93A7C49F166789CFA9 /* Pods_know_your_flowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2108A85AEFB7929F3A342E /* Pods_know_your_flowUITests.framework */; };
+		BA2B32EF228E39E800CEA107 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2B32EE228E39E800CEA107 /* MainTabBarController.swift */; };
 		BA47AC9E227CB27400047371 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47AC9D227CB27400047371 /* LoginViewController.swift */; };
 		BA47ACA2227CB55D00047371 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47ACA1227CB55D00047371 /* SignUpViewController.swift */; };
 		BA47ACA4227CB59300047371 /* ActivityHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47ACA3227CB59300047371 /* ActivityHomeViewController.swift */; };
@@ -54,6 +55,7 @@
 		709767445CE2023922982795 /* Pods-know-your-flowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-know-your-flowTests.debug.xcconfig"; path = "Target Support Files/Pods-know-your-flowTests/Pods-know-your-flowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		966DD30A05561BC2D246EE06 /* Pods-know-your-flowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-know-your-flowTests.release.xcconfig"; path = "Target Support Files/Pods-know-your-flowTests/Pods-know-your-flowTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA0166B074454B00A0B3BB89 /* Pods_know_your_flowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_know_your_flowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2B32EE228E39E800CEA107 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BA47AC9D227CB27400047371 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BA47ACA1227CB55D00047371 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA47ACA3227CB59300047371 /* ActivityHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHomeViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				C5F403102283BFA200C4B67D /* HistoryViewController.swift */,
 				BA7B8EA52283E5B90068C033 /* PreferencesViewController.swift */,
 				C5040E0D2289D695002735AF /* PeriodDetailViewController.swift */,
+				BA2B32EE228E39E800CEA107 /* MainTabBarController.swift */,
 			);
 			path = "know-your-flow";
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 			files = (
 				C5ED5615228278A5000D5C56 /* CalendarViewController.swift in Sources */,
 				BA47ACA4227CB59300047371 /* ActivityHomeViewController.swift in Sources */,
+				BA2B32EF228E39E800CEA107 /* MainTabBarController.swift in Sources */,
 				C5040E0E2289D695002735AF /* PeriodDetailViewController.swift in Sources */,
 				C590CE7F227D0A67006763A4 /* EditDateViewController.swift in Sources */,
 				BA47ACA2227CB55D00047371 /* SignUpViewController.swift in Sources */,
