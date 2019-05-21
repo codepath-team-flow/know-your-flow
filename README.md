@@ -251,10 +251,15 @@ cycleAverage | Number | number of average days between cycles
 
 * Build Progress Gifs
    * Week1
+   
    <img src='http://g.recordit.co/XF7DMYWcCh.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' /><img src='http://g.recordit.co/stlYAuHg7y.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
    
    * Week 2
-   <img src='http://g.recordit.co/2UNU7JsLHo.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' /><img src='<img src='http://g.recordit.co/A8m7i4M2rH.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' />' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
-
+   
+   <img src='http://g.recordit.co/2UNU7JsLHo.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' /><img src='http://g.recordit.co/A8m7i4M2rH.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' />
+   
+   * Week 3
+  
+   <img src='http://g.recordit.co/pLsasS8PSS.gif' title='Video Walkthrough' width='' alt='Week 3 Video Walkthrough' />
 
    
