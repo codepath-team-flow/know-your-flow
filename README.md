@@ -8,8 +8,7 @@ Group Project - Milestone 1 README
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
-2. [Build Progress Gifs](#Build-Progress)
-
+2. [Build Progress Gifs](#Build-Progress-Gifs)
 ## Overview
 ### Description
 Know Your Flow is an app that helps women track their periods by letting them input their personal information and then predicting the next potential period.
@@ -35,7 +34,7 @@ http://g.recordit.co/XF7DMYWcCh.gif
 - [x] 4. The user will be able to edit their inputted period start and end dates. http://g.recordit.co/A8m7i4M2rH.gif
 - [x] 5. The user will be able to see how many days until their next period.
 - [x] 6. The user will be able to see their personal predicted period start and end dates on a calendar. http://g.recordit.co/2UNU7JsLHo.gif
-- [x] 7. The user will be able to see their personal predicted fertility start dates.
+- [] 7. The user will be able to see their personal predicted fertility start dates.
 - [x] 8. The user will be able to check their previous history of periods. http://g.recordit.co/A8m7i4M2rH.gif
 - [x] 9. The user will be able to create a new account.
 http://g.recordit.co/XF7DMYWcCh.gif
@@ -250,7 +249,7 @@ cycleAverage | Number | number of average days between cycles
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-* Build Progress Gifs
+## Build Progress Gifs
    * Week1
    
    <img src='http://g.recordit.co/XF7DMYWcCh.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' /><img src='http://g.recordit.co/stlYAuHg7y.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
