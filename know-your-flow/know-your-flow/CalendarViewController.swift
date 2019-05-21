@@ -77,7 +77,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         }
         return 0
     }
-
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.dateFormatter.dateFormat = "MMM d, yyyy"
+        self.selectedDateLabel.text = self.dateFormatter.string(for: date)
+    }
 // Change image of cell
 //    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
 //        if eventDays.contains(date){
