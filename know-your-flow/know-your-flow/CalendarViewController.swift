@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 import Parse
 
-class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
+class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource,FSCalendarDelegateAppearance {
     
 //    fileprivate weak var calendar: FSCalendar!
     
@@ -18,7 +18,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var selectedDateLabel: UILabel!
 
     let dateFormatter = DateFormatter()
-    var eventDays = [Date]()
+    var periodDays = [Date]()
+    var fertileDays = [Date]()
     
     
     override func viewDidLoad() {
@@ -44,27 +45,28 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             if records != nil {
                 for record in records! {
                     print(record)
-                    self.eventDays.append(record["startDate"] as! Date)
-                    self.eventDays.append(record["endDate"] as! Date)
+                    var curr = record["startDate"] as! Date
+                    while(curr <= record["endDate"] as! Date){
+                        self.periodDays.append(curr)
+                        curr  = curr + (60*60*24)
+                    }
+                    var temp = record["startDate"] as! Date
+                    temp = temp + 10*(60*60*24)
+                    for _ in 1...5 {
+                        self.fertileDays.append(temp)
+                        temp = temp + (60*60*24)
+                    }
+                    
+                    //self.eventDays.append(record["startDate"] as! Date)
+                    //self.eventDays.append(record["endDate"] as! Date)
                 }
-                print(self.eventDays)
+              
                 self.calendar.reloadData()
             }
             
         }
     }
-      
-        
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     
 // Change subtitle of cell
 //    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
@@ -75,25 +77,44 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 //    }
 
 
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if eventDays.contains(date){
-            return 1
-        }
-        return 0
-    }
+//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+//        if periodDays.contains(date){
+//            return 1
+//        }
+//        return 0
+//    }
+    
+    
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+//
+//        if periodDays.contains(date) {
+//            return UIColor(displayP3Red: 1.0, green: 0.5864, blue: 0.54129, alpha: 0.6)
+//            // red = "1.0" green="0.5864" blue="0.54129"
+//
+//        }
+//        return nil
+//    }
+    
+    
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.dateFormatter.dateFormat = "MMM d, yyyy"
         self.selectedDateLabel.text = self.dateFormatter.string(for: date)
     }
-// Change image of cell
-//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-//        if eventDays.contains(date){
-//
-//            return UIImage(named: "pink-horizontal-line")
-//        }
-//        return nil
-//    }
+    
+    
+    
+ //Change image of cell
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        if periodDays.contains(date){
+
+            return UIImage(named: "pink-line-32")
+        }else if (fertileDays.contains(date)){
+            return UIImage(named: "blue-line-32")
+        }
+        return nil
+    }
     
 // Register Cell
 //    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
