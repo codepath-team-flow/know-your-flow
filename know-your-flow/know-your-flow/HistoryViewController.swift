@@ -12,6 +12,7 @@ import Parse
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    @IBOutlet weak var boxview: UIView!
     @IBOutlet weak var topLabel: UILabel!
     
     @IBOutlet weak var cycleLengthLabel: UILabel!
@@ -29,12 +30,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-
         
-        //navigationItem.rightBarButtonItem = editButtonItem
-        
-        
-      
         // Do any additional setup after loading the view.
     }
     
@@ -75,6 +71,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "bg5.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+
+    }
+    
     //TABLE VIEW STUFF
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return periodHistory.count
@@ -82,6 +88,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeriodHistoryCell") as! PeriodHistoryCell
+        
+        //transparent cell
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
+        
         let history = periodHistory[indexPath.row]
         
         //first day label
@@ -95,6 +105,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.cycleLabel.text = "\((history["daysBetweenPeriod"])!)"
         return cell
     }
+    
+  
     
     //Delete Cell/Period
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
