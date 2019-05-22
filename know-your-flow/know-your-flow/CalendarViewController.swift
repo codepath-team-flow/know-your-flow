@@ -51,7 +51,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
                         curr  = curr + (60*60*24)
                     }
                     var temp = record["startDate"] as! Date
-                    temp = temp + 10*(60*60*24)
+                    var averageCycle = (record["averageCycle"] as! Int)
+                    temp = temp + TimeInterval((averageCycle/3)*(60*60*24))
                     for _ in 1...5 {
                         self.fertileDays.append(temp)
                         temp = temp + (60*60*24)
