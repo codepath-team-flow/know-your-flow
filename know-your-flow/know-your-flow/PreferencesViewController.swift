@@ -21,6 +21,12 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var averageDaysinPeriodLabel: UILabel!
+    
+    @IBOutlet weak var averageDaysBtwnCyclesLabel: UILabel!
+    
+    var period = [PFObject]()
+    //var user = [PFObject]()
     let preferences = PFObject(className: "Preferences")
     
     override func viewDidLoad() {
@@ -31,7 +37,11 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
 //        query.whereKey("author", equalTo: PFUser.current())
         nameLabel.text = PFUser.current()?["name"] as! String
         ageLabel.text = PFUser.current()?["age"] as! String
-//        
+        averageDaysinPeriodLabel.text = PFUser.current()?["averageDaysinPeriod"] as! String
+        averageDaysBtwnCyclesLabel.text = PFUser.current()?["averageDaysBtwnPeriod"] as! String
+        
+        print(PFUser.current())
+
 //        let imageFile = preferences["image"] as! PFFileObject
 //        let urlString = imageFile.url!
 //        let url = URL(string: urlString)!
