@@ -21,6 +21,8 @@ class EditDateViewController: UIViewController {
     var periodHistory = [PFObject]()
     var averageLength = 28
     var predictedDate = Date()
+    var averagePeriodLength = 5
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,9 @@ class EditDateViewController: UIViewController {
         period["endDate"] = dateFormatter.date(from : endDateString ?? dateFormatter.string(from: costomDatePicker.date))
         period["author"] = PFUser.current()
         
+        //period Length
+        let length = (period["endDate"] as! Date).timeIntervalSince(period["startDate"] as! Date)
+        period["periodLength"] = Int(length)/60/60/24
         
         if(self.periodHistory.count == 0){
             //TODO: first check if user entered their average at sign up. if not set to 28
@@ -70,14 +75,17 @@ class EditDateViewController: UIViewController {
             
         }
         
+        //average days between period
         averageLength = calcAverage(count: self.periodHistory.count, newNumberOfDays: period["daysBetweenPeriod"] as! Int)
         
-        //TODO: handle new entry is in between data
-        
+        period["averageCycle"] = averageLength
         predictedDate = (period["startDate"] as! Date) + TimeInterval(averageLength*60*60*24)
-        
-        //save predictedDate TODO: discuss where to save this
         period["predictedDate"] = predictedDate
+        
+        //average period length
+        averagePeriodLength = calcAveragePeriodLength(count: self.periodHistory.count, newNumberOfDays: period["periodLength"] as! Int)
+        period["averagePeriodLength"] = averagePeriodLength
+        
         
         //        //get difference between start and end date
         //        let dateRangeStart = period["startDate"]
@@ -121,6 +129,30 @@ class EditDateViewController: UIViewController {
         }
         
     }
+    func calcAveragePeriodLength(count: Int, newNumberOfDays: Int) -> Int{
+        //TODO: handle new entry is in between data
+        //if count < 6, then add differences of what we have, devided by count.
+        var total = 0
+        if(count < 6){
+            for period in self.periodHistory {
+                total += (period["periodLength"] as! Int)
+            }
+            
+            return (total+newNumberOfDays) / (count + 1)
+        }
+        else{
+            //else: add the differences of the last 6, devide by 6
+            var counter = 6
+            while(counter > 0){
+                total += self.periodHistory[counter - 1]["periodLength"] as! Int
+                counter -= 1
+            }
+            return (total+newNumberOfDays) / (6 + 1)
+            
+        }
+        
+    }
+
     
     @IBAction func onDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

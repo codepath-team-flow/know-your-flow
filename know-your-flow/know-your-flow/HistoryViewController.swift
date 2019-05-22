@@ -12,9 +12,12 @@ import Parse
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-   
+    @IBOutlet weak var topLabel: UILabel!
+    
+    @IBOutlet weak var cycleLengthLabel: UILabel!
+    @IBOutlet weak var periodLengthLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var LastPeriodLabel: UILabel!
+   
     
     let dateFormatter = DateFormatter()
     var periodHistory = [PFObject]()
@@ -25,6 +28,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
+
         
         //navigationItem.rightBarButtonItem = editButtonItem
         
@@ -47,14 +52,24 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.periodHistory = records!
                 self.tableView.reloadData()
                 
-                // this is for displaying last date
                 let firstRecord = records?.first
-                self.dateFormatter.dateFormat = "MMM d, yyyy"
-                let lastStartDate = self.dateFormatter.string(for: firstRecord?["startDate"])
-                let lastEndDate = self.dateFormatter.string(for: firstRecord?["endDate"])
-                //print(lastDate)
-                self.LastPeriodLabel.text =  "\(lastStartDate ?? "no record found") - \(lastEndDate ?? "no record found")"
                 
+                //will crash if no data
+                if firstRecord != nil {
+                    self.cycleLengthLabel.text = "\((firstRecord?["averageCycle"])!)"
+                    self.periodLengthLabel.text = "\((firstRecord?["averagePeriodLength"])!)"
+                }
+                else {
+                    self.cycleLengthLabel.text = "0"
+                    self.periodLengthLabel.text = "0"
+                }
+                
+            }
+            if self.periodHistory.count < 6 {
+                self.topLabel.text = "Averaging your last \(self.periodHistory.count) cycles"
+            }
+            else {
+                self.topLabel.text = "Averaging your last 6 cycles"
             }
         }
         
@@ -69,9 +84,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeriodHistoryCell") as! PeriodHistoryCell
         let history = periodHistory[indexPath.row]
         
+        //first day label
         self.dateFormatter.dateFormat = "MMM d, yyyy"
         cell.firstDayLabel.text = self.dateFormatter.string(for: history["startDate"])
-        //cell.lengthLabel.text = history["periodLength"] as? String
+        
+        //length label
+        cell.lengthLabel.text = "\((history["periodLength"])!)"
+        
+        //cycle label
+        cell.cycleLabel.text = "\((history["daysBetweenPeriod"])!)"
         return cell
     }
     

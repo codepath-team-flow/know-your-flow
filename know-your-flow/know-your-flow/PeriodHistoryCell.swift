@@ -12,6 +12,8 @@ class PeriodHistoryCell: UITableViewCell {
 
     @IBOutlet weak var firstDayLabel: UILabel!
     @IBOutlet weak var lengthLabel: UILabel!
+    @IBOutlet weak var cycleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
