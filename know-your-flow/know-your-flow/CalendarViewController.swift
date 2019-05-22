@@ -20,14 +20,18 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     let dateFormatter = DateFormatter()
     var eventDays = [Date]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        selectedDateLabel.text = dateFormatter.string(for: Date())
+        
         calendar.dataSource = self
         calendar.delegate = self
         
         calendar.appearance.borderRadius = 0
         calendar.appearance.headerMinimumDissolvedAlpha = 0
-
+        
 //        calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
         
         // append event date to array
