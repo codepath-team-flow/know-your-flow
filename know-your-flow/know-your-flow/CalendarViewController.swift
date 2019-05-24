@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 import Parse
 
-class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource,FSCalendarDelegateAppearance {
+class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource,FSCalendarDelegateAppearance, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //    fileprivate weak var calendar: FSCalendar!
     
@@ -18,13 +18,20 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var eventDiscriptionLabel: UILabel!
     
+    @IBOutlet weak var flowTypeTextField: UITextField!
+    
     let dateFormatter = DateFormatter()
     var periodDays = [Date]()
     var fertileDays = [Date]()
-    
+    let flowPickerData = [String](arrayLiteral: "Spotty", "Very Light", "Light", "Medium", "Heavy", "Very Heavy")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let flowPicker = UIPickerView()
+        flowTypeTextField.inputView = flowPicker
+        flowPicker.delegate = self
+        flowPicker.dataSource = self
         dateFormatter.dateFormat = "MMM d, yyyy"
         selectedDateLabel.text = dateFormatter.string(for: Date())
         
@@ -69,7 +76,25 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return flowPickerData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return flowPickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        flowTypeTextField.textColor = UIColor.black
+        flowTypeTextField.text = flowPickerData[row]
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
     // Change subtitle of cell
     //    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
     //        if (calendar.today==date) {
