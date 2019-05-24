@@ -52,7 +52,7 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        renderImage()
         
     }
     /*
@@ -79,6 +79,20 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
         
         present(picker, animated: true, completion: nil)
         
+    }
+    
+    func renderImage(){
+        let query = PFQuery(className: "Preferences")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.findObjectsInBackground {
+            (records, error)in
+            var imageObj = records![0]["profileImage"] as! PFFileObject
+            let urlString = imageObj.url
+            let url = URL(string: urlString!)
+            self.imageView.af_setImage(withURL: url!)
+
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
