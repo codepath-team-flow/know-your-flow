@@ -18,13 +18,15 @@ class PeriodDetailViewController: UIViewController {
     private var datePicker1: UIDatePicker!
     private var datePicker2: UIDatePicker!
     var periodHistory = [PFObject]()
-    
+    var averageLength = 5
+    var averageCycle = 28
     var period : PFObject!
     let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getAverageLength()
+        getAverageDaysinPeriod()
         dateFormatter.dateFormat = "MMM d, yyyy"
         startDateTextField.text =  dateFormatter.string(from: period!["startDate"] as! Date)
         endDateTextField.text =  dateFormatter.string(from: period!["endDate"] as! Date)
@@ -64,7 +66,7 @@ class PeriodDetailViewController: UIViewController {
     @IBAction func onSubmitButton(_ sender: Any) {
         let query = PFQuery(className:"PeriodHistory")
         let objectId = self.period.objectId
-        print(objectId)
+     
         query.getObjectInBackground(withId: objectId as! String) { (period: PFObject?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -74,8 +76,7 @@ class PeriodDetailViewController: UIViewController {
                 record["endDate"] = self.dateFormatter.date(from : self.endDateTextField.text!)
                 record["periodLength"] = (record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24
 
-                let lastStartDate = self.findLastStartDate(date: record["startDate"] as! Date)
-                record["daysBetweenPeriod"] = Int((record["startDate"] as! Date).timeIntervalSince(lastStartDate as! Date)/60/60/24)
+                
                 period!.saveInBackground { (success, error) in
                     if success{
                         print("period edited and saved")
@@ -84,10 +85,32 @@ class PeriodDetailViewController: UIViewController {
                         print("error editing period")
                     }
                 }
+                
+                self.queryHistory()
+                let lastStartDate = self.findLastStartDate(date: record["startDate"] as! Date)
+                print(lastStartDate)
+                print(record["startDate"])
+                if(lastStartDate.timeIntervalSince(record["startDate"] as! Date) == TimeInterval(0)){
+                    record["daysBetweenPeriod"] = self.averageCycle
+                }else{
+                    record["daysBetweenPeriod"] = Int((record["startDate"] as! Date).timeIntervalSince(lastStartDate as! Date)/60/60/24)
+                }
+                
+                
+                
+                period!.saveInBackground { (success, error) in
+                    if success{
+                        self.recalculateDataAndSave()
+                        print("period edited and saved")
+                       
+                    }else{
+                        print("error editing period")
+                    }
+                }
             }
         }
-        queryHistory()
-        recalculateDataAndSave()
+        
+        
         
     }
     
@@ -99,6 +122,7 @@ class PeriodDetailViewController: UIViewController {
     }
     
     func recalculateDataAndSave(){
+        
         let averageCycle = calcAverageCycle()
       
         
@@ -132,6 +156,7 @@ class PeriodDetailViewController: UIViewController {
     }
     
     func calcAverageCycle() -> Int{
+       
         //TODO: handle new entry is in between data
         //if count < 6, then add differences of what we have, devided by count.
         var total = 0
@@ -156,6 +181,7 @@ class PeriodDetailViewController: UIViewController {
         
     }
     func calcAveragePeriodLength() -> Int{
+     
         //TODO: handle new entry is in between data
         //if count < 6, then add differences of what we have, devided by count.
         var total = 0
@@ -189,7 +215,7 @@ class PeriodDetailViewController: UIViewController {
         print("newEntry")
         print(newEntry)
         if(count == 1){
-            return curr
+            return newEntry
         }else{
             while(curr >= newEntry ){
                 count -= 1
@@ -213,6 +239,7 @@ class PeriodDetailViewController: UIViewController {
             (records, error) in
             if records != nil {
                 self.periodHistory = records!
+                print(records)
             }
         }
     }
@@ -226,5 +253,36 @@ class PeriodDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func getAverageLength() {
+        
+        let query = PFQuery(className: "Preferences")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current() as Any)
+        query.findObjectsInBackground {
+            (records, error)in
+            if(records != nil){
+                self.averageLength = records?[0]["averageDaysinPeriod"] as! Int
+            }
+            else{
+                print("error loading data")
+            }
+        }
+        
+    }
+    
+    func getAverageDaysinPeriod(){
+        let query = PFQuery(className: "Preferences")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current() as Any)
+        query.findObjectsInBackground {
+            (records, error)in
+            if(records != nil){
+                self.averageCycle = records?[0]["averageDaysBtwnPeriod"] as! Int
+            }
+            else{
+                print("error loading data")
+            }
+        }
+    }
 
 }

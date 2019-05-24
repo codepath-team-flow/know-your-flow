@@ -53,6 +53,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 else {
                     self.topLabel.text = "Averaging your last 6 cycles"
                 }
+                
             }
             else{
                 print("error finding data")
@@ -60,6 +61,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             
         }
         
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "bg5.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+
         let preferenceQuery = PFQuery(className: "Preferences")
         preferenceQuery.includeKey("author")
         preferenceQuery.whereKey("author", equalTo: PFUser.current())
@@ -72,16 +84,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.cycleLengthLabel.text = String(records?[0]["averageDaysBtwnPeriod"] as! Int)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Add a background view to the table view
-        let backgroundImage = UIImage(named: "bg5.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
-
     }
     
     //TABLE VIEW STUFF
@@ -127,6 +129,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             selectedHistory.saveInBackground { (success, error) in
                 if success {
                     print("deleted")
+                    
+                    //TODO: calculate new averages
                     if self.periodHistory.count < 6 {
                         self.topLabel.text = "Averaging your last \(self.periodHistory.count) cycles"
                     }

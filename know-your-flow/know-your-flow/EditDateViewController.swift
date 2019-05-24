@@ -14,6 +14,7 @@ class EditDateViewController: UIViewController {
     @IBOutlet weak var StartDateLabel: UILabel!
     
     @IBOutlet weak var costomDatePicker: UIDatePicker!
+    @IBOutlet weak var endDaysLable: UILabel!
     
     let dateFormatter = DateFormatter()
     let componentsFormatter = DateComponentsFormatter()
@@ -30,8 +31,7 @@ class EditDateViewController: UIViewController {
         getAverageDaysinPeriod()
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: costomDatePicker.date)
-        endDateString = dateFormatter.string(from: (costomDatePicker.date+TimeInterval(averageLength*(60*60*24)) ))
-        print(endDateString)
+        
         costomDatePicker?.datePickerMode = .date
         costomDatePicker?.addTarget(self, action: #selector(EditDateViewController.dateChanged(datePicker:)), for: .valueChanged)
         
@@ -45,6 +45,7 @@ class EditDateViewController: UIViewController {
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: datePicker.date)
         endDateString = dateFormatter.string(from: (costomDatePicker.date+TimeInterval(averageLength*(60*60*24)) ))
+        endDaysLable.text = "Expected to end in " + String(averageLength) + " days"
         
     }
     
@@ -225,6 +226,9 @@ class EditDateViewController: UIViewController {
             (records, error)in
             if(records != nil){
                 self.averageLength = records?[0]["averageDaysinPeriod"] as! Int
+                self.endDateString = self.dateFormatter.string(from: (self.costomDatePicker.date+TimeInterval(self.averageLength*(60*60*24)) ))
+                self.endDaysLable.text = "Expected to end in " + String(self.averageLength) + " days"
+                
             }
             else{
                 print("error loading data")
@@ -241,6 +245,7 @@ class EditDateViewController: UIViewController {
             (records, error)in
             if(records != nil){
                 self.averageCycle = records?[0]["averageDaysBtwnPeriod"] as! Int
+                
             }
             else{
                 print("error loading data")
