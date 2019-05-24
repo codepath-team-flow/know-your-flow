@@ -31,19 +31,19 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         nameLabel.text = PFUser.current()?["name"] as! String
-        ageLabel.text = PFUser.current()?["age"] as! String + " years old"
-        averageDaysinPeriodLabel.text = PFUser.current()?["averageDaysinPeriod"] as! String + " days"
-        averageDaysBtwnCyclesLabel.text = PFUser.current()?["averageDaysBtwnPeriod"] as! String + " days"
+        ageLabel.text = PFUser.current()?["age"] as! String
         
-        print(PFUser.current())
+
+        
 
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        renderImage()
+        renderData()
         
     }
+    
     /*
     // MARK: - Navigation
 
@@ -70,16 +70,29 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
         
     }
     
-    func renderImage(){
+    func renderData(){
         let query = PFQuery(className: "Preferences")
         query.includeKey("author")
         query.whereKey("author", equalTo: PFUser.current())
         query.findObjectsInBackground {
             (records, error)in
-            var imageObj = records![0]["profileImage"] as! PFFileObject
-            let urlString = imageObj.url
-            let url = URL(string: urlString!)
-            self.imageView.af_setImage(withURL: url!)
+            if(records != nil){
+                if(records![0]["profileImage"] != nil){
+                    var imageObj = records![0]["profileImage"] as! PFFileObject
+                    let urlString = imageObj.url
+                    let url = URL(string: urlString!)
+                    self.imageView.af_setImage(withURL: url!)
+                    
+                }
+                self.averageDaysinPeriodLabel.text = String(records![0]["averageDaysinPeriod"] as! Int) + " days"
+                self.averageDaysBtwnCyclesLabel.text = String(records![0]["averageDaysBtwnPeriod"] as! Int) + " days"
+            }
+            else{
+                print("error loading data")
+            }
+            
+            
+
 
         }
     }

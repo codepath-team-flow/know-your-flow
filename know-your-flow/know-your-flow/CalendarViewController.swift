@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 import Parse
 
-class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource,FSCalendarDelegateAppearance, UIPickerViewDelegate, UIPickerViewDataSource {
+class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource,FSCalendarDelegateAppearance {
     
     //    fileprivate weak var calendar: FSCalendar!
     
@@ -18,20 +18,17 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var eventDiscriptionLabel: UILabel!
     
-    @IBOutlet weak var flowTypeTextField: UITextField!
-    
+
     let dateFormatter = DateFormatter()
     var periodDays = [Date]()
     var fertileDays = [Date]()
     let flowPickerData = [String](arrayLiteral: "Spotty", "Very Light", "Light", "Medium", "Heavy", "Very Heavy")
+    var averageCycle = 28
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let flowPicker = UIPickerView()
-        flowTypeTextField.inputView = flowPicker
-        flowPicker.delegate = self
-        flowPicker.dataSource = self
+        getAverageCycle()
+   
         dateFormatter.dateFormat = "MMM d, yyyy"
         selectedDateLabel.text = dateFormatter.string(for: Date())
         
@@ -43,6 +40,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         //        calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         // append event date to array
         let query = PFQuery(className: "PeriodHistory")
         query.includeKey("author")
@@ -59,15 +60,13 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
                         curr  = curr + (60*60*24)
                     }
                     var temp = record["startDate"] as! Date
-                    var averageCycle = (record["averageCycle"] as! Int)
-                    temp = temp + TimeInterval((averageCycle/3)*(60*60*24))
+                    
+                    temp = temp + TimeInterval((self.averageCycle/3)*(60*60*24))
                     for _ in 1...5 {
                         self.fertileDays.append(temp)
                         temp = temp + (60*60*24)
                     }
                     
-                    //self.eventDays.append(record["startDate"] as! Date)
-                    //self.eventDays.append(record["endDate"] as! Date)
                 }
                 
                 self.calendar.reloadData()
@@ -75,56 +74,32 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             
         }
     }
+    func getAverageCycle(){
+        
+        let preferenceQuery = PFQuery(className: "Preferences")
+        preferenceQuery.includeKey("author")
+        preferenceQuery.whereKey("author", equalTo: PFUser.current())
+        preferenceQuery.findObjectsInBackground{
+            (records, error) in
+            if(error != nil) {
+                print("error quering preferences")
+            }else{
+                self.averageCycle = records![0]["averageDaysBtwnPeriod"] as! Int
+            }
+        }
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return flowPickerData.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return flowPickerData[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        flowTypeTextField.textColor = UIColor.black
-        flowTypeTextField.text = flowPickerData[row]
-    }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
-    // Change subtitle of cell
-    //    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-    //        if (calendar.today==date) {
-    //            return "today";
-    //        }
-    //        return nil
-    //    }
-    
-    
-    //    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-    //        if periodDays.contains(date){
-    //            return 1
-    //        }
-    //        return 0
-    //    }
-    
-    
-    //    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-    //
-    //        if periodDays.contains(date) {
-    //            return UIColor(displayP3Red: 1.0, green: 0.5864, blue: 0.54129, alpha: 0.6)
-    //            // red = "1.0" green="0.5864" blue="0.54129"
-    //
-    //        }
-    //        return nil
-    //    }
-    
-    
-    
-    
+   
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.dateFormatter.dateFormat = "MMM d, yyyy"
         self.selectedDateLabel.text = self.dateFormatter.string(for: date)
@@ -151,21 +126,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         }
         return nil
     }
-    
-    // Register Cell
-    //    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-    //
-    //        let cell = calendar.dequeueReusableCell(withIdentifier: "CELL", for: date, at: position)
-    //        cell.imageView.contentMode = .scaleAspectFit
-    //        return cell
-    //    }
-    
-    // FSCalendarDelegate
-    //    func calendar(calendar: FSCalendar!, didSelectDate date: NSDate!) {
-    //        dateFormatter.dateFormat = "MMM d, yyyy"
-    //        dateLabel.text = dateFormatter.string(from: date as Date)
-    //    }
-    //
+
 }
 
 

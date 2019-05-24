@@ -47,28 +47,21 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             if records != nil {
                 self.periodHistory = records!
                 self.tableView.reloadData()
-                
-                let firstRecord = records?.first
-                
-                //will crash if no data
-                if firstRecord != nil {
-                    self.cycleLengthLabel.text = "\((firstRecord?["averageCycle"])!)"
-                    self.periodLengthLabel.text = "\((firstRecord?["averagePeriodLength"])!)"
+                if self.periodHistory.count < 6 {
+                    self.topLabel.text = "Averaging your last \(self.periodHistory.count) cycles"
                 }
                 else {
-                    self.cycleLengthLabel.text = "0"
-                    self.periodLengthLabel.text = "0"
+                    self.topLabel.text = "Averaging your last 6 cycles"
                 }
                 
             }
-            if self.periodHistory.count < 6 {
-                self.topLabel.text = "Averaging your last \(self.periodHistory.count) cycles"
+            else{
+                print("error finding data")
             }
-            else {
-                self.topLabel.text = "Averaging your last 6 cycles"
-            }
+            
         }
         
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +72,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
 
+        let preferenceQuery = PFQuery(className: "Preferences")
+        preferenceQuery.includeKey("author")
+        preferenceQuery.whereKey("author", equalTo: PFUser.current())
+        preferenceQuery.findObjectsInBackground{
+            (records, error) in
+            if(error != nil) {
+                print("error quering preferences")
+            }else{
+                self.periodLengthLabel.text = String(records?[0]["averageDaysinPeriod"] as! Int)
+                self.cycleLengthLabel.text = String(records?[0]["averageDaysBtwnPeriod"] as! Int)
+            }
+        }
     }
     
     //TABLE VIEW STUFF
@@ -124,6 +129,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             selectedHistory.saveInBackground { (success, error) in
                 if success {
                     print("deleted")
+                    
+                    //TODO: calculate new averages
+                    if self.periodHistory.count < 6 {
+                        self.topLabel.text = "Averaging your last \(self.periodHistory.count) cycles"
+                    }
+                    else {
+                        self.topLabel.text = "Averaging your last 6 cycles"
+                    }
                 }
                 else {
                     print("Error deleting")

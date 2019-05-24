@@ -22,7 +22,7 @@ class ActivityHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         containerView.layer.cornerRadius = 10
-
+        
  
         // Do any additional setup after loading the view.
     }

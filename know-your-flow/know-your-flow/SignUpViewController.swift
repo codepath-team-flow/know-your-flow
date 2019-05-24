@@ -38,16 +38,38 @@ class SignUpViewController: UIViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         let user = PFUser()
+        
+        //save user preference
+//
+//        
+        
+        
+        
+        //save user info
         user.username = usernameField.text
         user.email = emailField.text
         user.password = passwordField.text
         user["age"] = ageField.text
         user["name"] = nameField.text
-        user["averageDaysinPeriod"] = averageDaysinPeriodField.text
-        user["averageDaysBtwnPeriod"] = averageDaysBtwnPeriodField.text
+        
         
         user.signUpInBackground { (success, error) in
             if success {
+                let preferences = PFObject(className: "Preferences")
+                preferences["author"] = PFUser.current()!
+                preferences["averageDaysinPeriod"] = Int(self.averageDaysinPeriodField.text!)
+                preferences["averageDaysBtwnPeriod"] = Int(self.averageDaysBtwnPeriodField.text!)
+                preferences.saveInBackground {
+                    (success, error) in
+                    if error != nil {
+                        print("error saving preferences")
+                    }
+                    else{
+                        print("preferences saved")
+                    }
+                }
+                
+                
                self.performSegue(withIdentifier: "signupSegue", sender: nil)
                 print("Sign up success")
             } else {
