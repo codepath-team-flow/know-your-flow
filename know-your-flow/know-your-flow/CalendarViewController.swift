@@ -38,9 +38,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendar.appearance.borderRadius = 0
         calendar.appearance.headerMinimumDissolvedAlpha = 0
         
-        //        calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
-        
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
