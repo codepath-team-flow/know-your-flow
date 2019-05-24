@@ -86,14 +86,7 @@ class EditDateViewController: UIViewController {
         averagePeriodLength = calcAveragePeriodLength(count: self.periodHistory.count, newNumberOfDays: period["periodLength"] as! Int)
         period["averagePeriodLength"] = averagePeriodLength
         
-        
-        //        //get difference between start and end date
-        //        let dateRangeStart = period["startDate"]
-        //        let dateRangeEnd = period["endDate"]
-        //        componentsFormatter.allowedUnits = [.day]
-        //        componentsFormatter.unitsStyle = .full
-        //        period["periodLength"] = componentsFormatter.string(from: dateRangeStart as! Date, to: dateRangeEnd as! Date)
-        
+        //save to PeriodHistory
         period.saveInBackground { (success, error) in
             if success{
                 print("period saved")
@@ -102,6 +95,21 @@ class EditDateViewController: UIViewController {
                 print("error saving period")
             }
         }
+        
+//        let period_User = PFObject(className: "User")
+//        period_User["averageDaysinPeriod"] = period["averagePeriodLength"]
+//        period_User["averageDaysBtwnPeriod"] = period["averageCycle"]
+//        
+//        //save to user table
+//        period_User.saveInBackground { (success, error) in
+//            if success{
+//                print("period saved")
+//                self.dismiss(animated: true, completion: nil)
+//            }else{
+//                print("error saving period")
+//            }
+//        }
+        
         
         
     }

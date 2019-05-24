@@ -70,6 +70,7 @@ class PeriodDetailViewController: UIViewController {
                 record["startDate"] = self.dateFormatter.date(from : self.startDateTextField.text!)
                 record["endDate"] = self.dateFormatter.date(from : self.endDateTextField.text!)
                 record["periodLength"] = (record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24
+//                record["average"] = 
                 
                 period!.saveInBackground { (success, error) in
                     if success{

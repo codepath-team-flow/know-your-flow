@@ -63,7 +63,7 @@ class ActivityHomeViewController: UIViewController {
                     
                     if(numberOfDays>=0){
                         self.NumberOfDaysLabel.text = String(numberOfDays)
-                        self.leftOrLateLabel.text = "Days Left"
+                        self.leftOrLateLabel.text = "Days Left Until Next Period"
                     }else{
                         self.NumberOfDaysLabel.text = String(-1 * numberOfDays)
                         self.leftOrLateLabel.text = "Days Late"
