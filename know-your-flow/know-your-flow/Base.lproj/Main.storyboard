@@ -1083,7 +1083,7 @@
                                     <constraint firstItem="CyZ-uk-zfI" firstAttribute="leading" secondItem="XaQ-A8-uiG" secondAttribute="trailing" constant="8" id="zcp-yR-Ahr"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-Mr-ivZ">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-Mr-ivZ">
                                 <rect key="frame" x="57" y="173" width="300" height="311"/>
                                 <gestureRecognizers/>
                                 <connections>
