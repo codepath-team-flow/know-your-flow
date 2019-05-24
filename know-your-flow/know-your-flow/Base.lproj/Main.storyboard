@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -813,7 +813,7 @@
                                 <rect key="frame" x="20" y="424" width="374" height="68"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0C-BF-HLj">
-                                        <rect key="frame" x="60" y="22" width="50" height="21"/>
+                                        <rect key="frame" x="68" y="22" width="50" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -825,10 +825,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pink-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="Dx9-JQ-N0g">
-                                        <rect key="frame" x="20" y="11" width="16" height="16"/>
+                                        <rect key="frame" x="20" y="11" width="24" height="24"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="Pja-eZ-QXa">
-                                        <rect key="frame" x="239" y="11" width="16" height="16"/>
+                                        <rect key="frame" x="230" y="11" width="25" height="25"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1064,7 +1064,7 @@
                                     <constraint firstItem="CyZ-uk-zfI" firstAttribute="leading" secondItem="XaQ-A8-uiG" secondAttribute="trailing" constant="8" id="zcp-yR-Ahr"/>
                                 </constraints>
                             </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-Mr-ivZ">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-Mr-ivZ">
                                 <rect key="frame" x="57" y="173" width="300" height="311"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -1135,16 +1135,16 @@
     <resources>
         <image name="bg5" width="564" height="1015"/>
         <image name="bg6" width="564" height="1002"/>
-        <image name="blue-line-32" width="32" height="32"/>
-        <image name="event-1" width="24" height="24"/>
-        <image name="history" width="24" height="24"/>
-        <image name="home" width="24" height="24"/>
-        <image name="logo" width="200" height="200"/>
-        <image name="pink-line-32" width="32" height="32"/>
-        <image name="preference" width="24" height="24"/>
+        <image name="blue-line-32" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="event-1" width="18" height="18"/>
+        <image name="history" width="18" height="18"/>
+        <image name="home" width="18" height="18"/>
+        <image name="logo" width="200.16000366210938" height="200.16000366210938"/>
+        <image name="pink-line-32" width="24" height="24"/>
+        <image name="preference" width="18" height="18"/>
         <image name="profile-placeholder" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CJ8-uN-BSE"/>
+        <segue reference="RPk-Tf-U0d"/>
     </inferredMetricsTieBreakers>
 </document>
