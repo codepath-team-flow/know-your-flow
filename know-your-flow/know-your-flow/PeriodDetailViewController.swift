@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class PeriodDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var startDateTextField: UITextField!
     
     @IBOutlet weak var endDateTextField: UITextField!
@@ -52,7 +52,7 @@ class PeriodDetailViewController: UIViewController {
         startDateTextField.text = dateFormatter.string(from: datePicker.date)
         
         //print(datePicker.date)
-
+        
         //dateString = StartDateLabel.text
     }
     @objc func endDateChanged(datePicker: UIDatePicker){
@@ -64,11 +64,11 @@ class PeriodDetailViewController: UIViewController {
         //dateString = StartDateLabel.text
     }
     @IBAction func onSubmitButton(_ sender: Any) {
-
+        
         
         let query = PFQuery(className:"PeriodHistory")
         let objectId = self.period.objectId
-     
+        
         query.getObjectInBackground(withId: objectId as! String) { (period: PFObject?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -77,7 +77,7 @@ class PeriodDetailViewController: UIViewController {
                 record["startDate"] = self.dateFormatter.date(from : self.startDateTextField.text!)
                 record["endDate"] = self.dateFormatter.date(from : self.endDateTextField.text!)
                 record["periodLength"] = (record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24
-
+                
                 
                 period!.saveInBackground { (success, error) in
                     if success{
@@ -89,13 +89,13 @@ class PeriodDetailViewController: UIViewController {
                 }
                 
                 self.queryHistory()
-            
+                
                 period!.saveInBackground { (success, error) in
                     if success{
                         self.queryHistory()
                         self.recalculateDataAndSave()
                         print("period edited and saved")
-                       
+                        
                     }else{
                         print("error editing period")
                     }
@@ -122,11 +122,11 @@ class PeriodDetailViewController: UIViewController {
         historyQuery.findObjectsInBackground {
             (records, error)in
             if(records != nil){
-
+                
                 var c = records!.count
                 if(c==1){
                     records![0]["daysBetweenPeriod"] = self.averageCycle
-                  
+                    
                     var newPeriodLength = (records![0]["endDate"] as! Date).timeIntervalSince(records![0]["startDate"] as! Date)
                     records![0]["periodLength"] = Int(newPeriodLength)/60/60/24
                     records![0].saveInBackground{
@@ -168,10 +168,10 @@ class PeriodDetailViewController: UIViewController {
                     }
                     self.queryHistory()
                 }else if (c>1) {
-                 
+                    
                     
                     for i in 1...(c-1) {
-                       
+                        
                         var newCycle = (records![i]["startDate"] as! Date).timeIntervalSince(records![i-1]["startDate"] as! Date)
                         records![i]["daysBetweenPeriod"] = Int(newCycle)/60/60/24
                         var newPeriodLength = (records![i]["endDate"] as! Date).timeIntervalSince(records![i]["startDate"] as! Date)
@@ -224,11 +224,11 @@ class PeriodDetailViewController: UIViewController {
             }
         }
         
-      
+        
     }
     
     func calcAverageCycle() -> Int{
-       
+        
         //TODO: handle new entry is in between data
         //if count < 6, then add differences of what we have, devided by count.
         var total = 0
@@ -237,7 +237,7 @@ class PeriodDetailViewController: UIViewController {
             for period in self.periodHistory {
                 total += (period["daysBetweenPeriod"] as! Int)
             }
-          
+            
             return Int(total / count)
         }
         else{
@@ -247,12 +247,13 @@ class PeriodDetailViewController: UIViewController {
                 total += self.periodHistory[counter - 1]["daysBetweenPeriod"] as! Int
                 counter -= 1
             }
-         
+            
             return Int(total / 6)
             
         }
         
     }
+    
     func calcAveragePeriodLength() -> Int{
         
         //TODO: handle new entry is in between data
@@ -263,7 +264,7 @@ class PeriodDetailViewController: UIViewController {
             for period in self.periodHistory {
                 total += (period["periodLength"] as! Int)
             }
-          
+            
             return Int(total / count)
         }
         else{
@@ -273,13 +274,13 @@ class PeriodDetailViewController: UIViewController {
                 total += self.periodHistory[counter - 1]["periodLength"] as! Int
                 counter -= 1
             }
-         
+            
             return Int(total / 6)
             
         }
         
     }
-   
+    
     
     func queryHistory(){
         let query = PFQuery(className: "PeriodHistory")
@@ -290,20 +291,20 @@ class PeriodDetailViewController: UIViewController {
             (records, error) in
             if records != nil {
                 self.periodHistory = records!
-              
+                
             }
         }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     func getAverageLength() {
         
         let query = PFQuery(className: "Preferences")
@@ -335,5 +336,5 @@ class PeriodDetailViewController: UIViewController {
             }
         }
     }
-
+    
 }
