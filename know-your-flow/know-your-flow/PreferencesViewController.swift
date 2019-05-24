@@ -25,26 +25,15 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var averageDaysBtwnCyclesLabel: UILabel!
     
-    var period = [PFObject]()
-    //var user = [PFObject]()
     let preferences = PFObject(className: "Preferences")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        let query = PFQuery(className: "User")
-//        query.includeKey("author")
-//        query.whereKey("author", equalTo: PFUser.current())
         nameLabel.text = PFUser.current()?["name"] as! String
         ageLabel.text = PFUser.current()?["age"] as! String
         
 
-        
-
-//        let imageFile = preferences["image"] as! PFFileObject
-//        let urlString = imageFile.url!
-//        let url = URL(string: urlString)!
-//        imageView.af_setImage(withURL: url)
         
 
     }
@@ -95,8 +84,8 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
                     self.imageView.af_setImage(withURL: url!)
                     
                 }
-                self.averageDaysinPeriodLabel.text = String(records![0]["averageDaysinPeriod"] as! Int)
-                self.averageDaysBtwnCyclesLabel.text = String(records![0]["averageDaysBtwnPeriod"] as! Int)
+                self.averageDaysinPeriodLabel.text = String(records![0]["averageDaysinPeriod"] as! Int) + "days"
+                self.averageDaysBtwnCyclesLabel.text = String(records![0]["averageDaysBtwnPeriod"] as! Int) + "days"
             }
             else{
                 print("error loading data")
@@ -110,7 +99,7 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as! UIImage
-        let size = CGSize(width: 188, height: 188)
+        let size = CGSize(width: 300, height: 300)
         let scaledImage = image.af_imageScaled(to: size)
         imageView.image = scaledImage
         
