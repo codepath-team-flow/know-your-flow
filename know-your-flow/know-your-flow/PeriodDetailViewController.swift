@@ -17,6 +17,7 @@ class PeriodDetailViewController: UIViewController {
     
     private var datePicker1: UIDatePicker!
     private var datePicker2: UIDatePicker!
+    var periodHistory = [PFObject]()
     
     var period : PFObject!
     let dateFormatter = DateFormatter()
@@ -40,6 +41,8 @@ class PeriodDetailViewController: UIViewController {
         datePicker2?.addTarget(self, action: #selector(PeriodDetailViewController.endDateChanged(datePicker:)), for: .valueChanged)
         startDateTextField.inputView = datePicker1
         endDateTextField.inputView = datePicker2
+        
+        queryHistory()
     }
     
     @objc func startDateChanged(datePicker: UIDatePicker){
@@ -70,12 +73,12 @@ class PeriodDetailViewController: UIViewController {
                 record["startDate"] = self.dateFormatter.date(from : self.startDateTextField.text!)
                 record["endDate"] = self.dateFormatter.date(from : self.endDateTextField.text!)
                 record["periodLength"] = (record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24
-//                record["average"] = 
-                
+
+                let lastStartDate = self.findLastStartDate(date: record["startDate"] as! Date)
+                record["daysBetweenPeriod"] = (record["startDate"] as! Date).timeIntervalSince(lastStartDate as! Date)/60/60/24
                 period!.saveInBackground { (success, error) in
                     if success{
                         print("period edited and saved")
-//                        self.navigationController?.popToRootViewController(animated: true)
                         self.dismiss(animated: true, completion: nil)
                     }else{
                         print("error editing period")
@@ -83,13 +86,56 @@ class PeriodDetailViewController: UIViewController {
                 }
             }
         }
+        recalculateData()
     }
+    
+    
     
     
     @IBAction func onBackButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func recalculateData() {
+        
+    }
+    
+    func findLastStartDate(date: Date) -> Date {
+        let lastStartDate: Date
+        let newEntry = date
+        var count = periodHistory.count
+        var curr = periodHistory[count - 1]["startDate"] as! Date
+        print("curr")
+        print("newEntry")
+        print(newEntry)
+        if(count == 1){
+            return curr
+        }else{
+            while(curr >= newEntry ){
+                count -= 1
+                curr = periodHistory[count-1]["startDate"] as! Date
+                
+                //TODO:handle exception, overflow
+            }
+        }
+        
+        print("last period startdate")
+        print(curr)
+        return curr
+    }
+    
+    func queryHistory(){
+        let query = PFQuery(className: "PeriodHistory")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.order(byAscending: "startDate")
+        query.findObjectsInBackground{
+            (records, error) in
+            if records != nil {
+                self.periodHistory = records!
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

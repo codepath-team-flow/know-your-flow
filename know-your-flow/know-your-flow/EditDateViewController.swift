@@ -19,18 +19,19 @@ class EditDateViewController: UIViewController {
     let componentsFormatter = DateComponentsFormatter()
     var endDateString = "Apr 3, 2019";
     var periodHistory = [PFObject]()
-    var averageLength = 28
     var predictedDate = Date()
-    var averagePeriodLength = 5
-
+    var averageLength = 5
+    var averageCycle = 28
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getAverageLength()
+        getAverageDaysinPeriod()
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: costomDatePicker.date)
-        endDateString = dateFormatter.string(from: (costomDatePicker.date+5*(60*60*24)))
-        
+        endDateString = dateFormatter.string(from: (costomDatePicker.date+TimeInterval(averageLength*(60*60*24)) ))
+        print(endDateString)
         costomDatePicker?.datePickerMode = .date
         costomDatePicker?.addTarget(self, action: #selector(EditDateViewController.dateChanged(datePicker:)), for: .valueChanged)
         
@@ -43,7 +44,7 @@ class EditDateViewController: UIViewController {
         
         dateFormatter.dateFormat = "MMM d, yyyy"
         StartDateLabel.text = dateFormatter.string(from: datePicker.date)
-        endDateString = dateFormatter.string(from: datePicker.date+5*(60*60*24))
+        endDateString = dateFormatter.string(from: (costomDatePicker.date+TimeInterval(averageLength*(60*60*24)) ))
         
     }
     
@@ -63,7 +64,7 @@ class EditDateViewController: UIViewController {
         
         if(self.periodHistory.count == 0){
             //TODO: first check if user entered their average at sign up. if not set to 28
-            period["daysBetweenPeriod"] = 28
+            period["daysBetweenPeriod"] = self.averageCycle
         }else{
             let lastStartDate = findLastPeriodStartDate(date: period["startDate"] as! Date)
             print("lastStartDate")
@@ -76,15 +77,41 @@ class EditDateViewController: UIViewController {
         }
         
         //average days between period
-        averageLength = calcAverage(count: self.periodHistory.count, newNumberOfDays: period["daysBetweenPeriod"] as! Int)
+        self.averageCycle = calcAverage(count: self.periodHistory.count, newNumberOfDays: period["daysBetweenPeriod"] as! Int)
         
-        period["averageCycle"] = averageLength
-        predictedDate = (period["startDate"] as! Date) + TimeInterval(averageLength*60*60*24)
+        
+        self.predictedDate = (period["startDate"] as! Date) + TimeInterval(self.averageCycle*60*60*24)
         period["predictedDate"] = predictedDate
         
         //average period length
-        averagePeriodLength = calcAveragePeriodLength(count: self.periodHistory.count, newNumberOfDays: period["periodLength"] as! Int)
-        period["averagePeriodLength"] = averagePeriodLength
+        self.averageLength = calcAveragePeriodLength(count: self.periodHistory.count, newNumberOfDays: period["periodLength"] as! Int)
+        
+        // save to Preference table
+        let queryPreferences = PFQuery(className:"Preferences")
+        queryPreferences.includeKey("author")
+        queryPreferences.whereKey("author", equalTo: PFUser.current())
+        queryPreferences.findObjectsInBackground {
+            (records, error)in
+            if(records != nil){
+                records![0]["averageDaysBtwnPeriod"] = self.averageCycle
+                records![0]["averageDaysinPeriod"] = self.averageLength
+                print(self.averageCycle)
+                records![0].saveInBackground { (success, error) in
+                    if success{
+                        print("new averages saved")
+                      
+                    }else{
+                        print("error updating preference")
+                    }
+                }
+            }
+            else{
+                print("error updating preference ")
+            }
+            
+        }
+            
+        
         
         //save to PeriodHistory
         period.saveInBackground { (success, error) in
@@ -95,21 +122,6 @@ class EditDateViewController: UIViewController {
                 print("error saving period")
             }
         }
-        
-//        let period_User = PFObject(className: "User")
-//        period_User["averageDaysinPeriod"] = period["averagePeriodLength"]
-//        period_User["averageDaysBtwnPeriod"] = period["averageCycle"]
-//        
-//        //save to user table
-//        period_User.saveInBackground { (success, error) in
-//            if success{
-//                print("period saved")
-//                self.dismiss(animated: true, completion: nil)
-//            }else{
-//                print("error saving period")
-//            }
-//        }
-        
         
         
     }
@@ -160,7 +172,7 @@ class EditDateViewController: UIViewController {
         }
         
     }
-
+    
     
     @IBAction func onDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -204,9 +216,36 @@ class EditDateViewController: UIViewController {
         return curr
     }
     
-    // check if there exist a next period record.
-    //    func findNextPeriodStartDate(){
-    //
-    //    }
+    func getAverageLength() {
+        
+        let query = PFQuery(className: "Preferences")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.findObjectsInBackground {
+            (records, error)in
+            if(records != nil){
+                self.averageLength = records?[0]["averageDaysinPeriod"] as! Int
+            }
+            else{
+                print("error loading data")
+            }
+        }
+        
+    }
+    
+    func getAverageDaysinPeriod(){
+        let query = PFQuery(className: "Preferences")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.findObjectsInBackground {
+            (records, error)in
+            if(records != nil){
+                self.averageCycle = records?[0]["averageDaysBtwnPeriod"] as! Int
+            }
+            else{
+                print("error loading data")
+            }
+        }
+    }
     
 }

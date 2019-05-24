@@ -24,10 +24,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var periodDays = [Date]()
     var fertileDays = [Date]()
     let flowPickerData = [String](arrayLiteral: "Spotty", "Very Light", "Light", "Medium", "Heavy", "Very Heavy")
+    var averageCycle = 28
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getAverageCycle()
         let flowPicker = UIPickerView()
         flowTypeTextField.inputView = flowPicker
         flowPicker.delegate = self
@@ -59,8 +60,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
                         curr  = curr + (60*60*24)
                     }
                     var temp = record["startDate"] as! Date
-                    var averageCycle = (record["averageCycle"] as! Int)
-                    temp = temp + TimeInterval((averageCycle/3)*(60*60*24))
+                    
+                    
+                    temp = temp + TimeInterval((self.averageCycle/3)*(60*60*24))
                     for _ in 1...5 {
                         self.fertileDays.append(temp)
                         temp = temp + (60*60*24)
@@ -73,6 +75,20 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
                 self.calendar.reloadData()
             }
             
+        }
+    }
+    func getAverageCycle(){
+        
+        let preferenceQuery = PFQuery(className: "Preferences")
+        preferenceQuery.includeKey("author")
+        preferenceQuery.whereKey("author", equalTo: PFUser.current())
+        preferenceQuery.findObjectsInBackground{
+            (records, error) in
+            if(error != nil) {
+                print("error quering preferences")
+            }else{
+                self.averageCycle = records![0]["averageDaysBtwnPeriod"] as! Int
+            }
         }
     }
     
