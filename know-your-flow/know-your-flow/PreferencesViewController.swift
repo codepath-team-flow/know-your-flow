@@ -84,8 +84,8 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
                     self.imageView.af_setImage(withURL: url!)
                     
                 }
-                self.averageDaysinPeriodLabel.text = String(records![0]["averageDaysinPeriod"] as! Int) + "days"
-                self.averageDaysBtwnCyclesLabel.text = String(records![0]["averageDaysBtwnPeriod"] as! Int) + "days"
+                self.averageDaysinPeriodLabel.text = String(records![0]["averageDaysinPeriod"] as! Int) + " days"
+                self.averageDaysBtwnCyclesLabel.text = String(records![0]["averageDaysBtwnPeriod"] as! Int) + " days"
             }
             else{
                 print("error loading data")

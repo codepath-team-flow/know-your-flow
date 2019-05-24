@@ -127,6 +127,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             selectedHistory.saveInBackground { (success, error) in
                 if success {
                     print("deleted")
+                    if self.periodHistory.count < 6 {
+                        self.topLabel.text = "Averaging your last \(self.periodHistory.count) cycles"
+                    }
+                    else {
+                        self.topLabel.text = "Averaging your last 6 cycles"
+                    }
                 }
                 else {
                     print("Error deleting")

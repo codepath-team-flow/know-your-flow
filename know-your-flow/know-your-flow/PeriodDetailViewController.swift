@@ -75,18 +75,20 @@ class PeriodDetailViewController: UIViewController {
                 record["periodLength"] = (record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24
 
                 let lastStartDate = self.findLastStartDate(date: record["startDate"] as! Date)
-                record["daysBetweenPeriod"] = (record["startDate"] as! Date).timeIntervalSince(lastStartDate as! Date)/60/60/24
+                record["daysBetweenPeriod"] = Int((record["startDate"] as! Date).timeIntervalSince(lastStartDate as! Date)/60/60/24)
                 period!.saveInBackground { (success, error) in
                     if success{
                         print("period edited and saved")
-                        self.dismiss(animated: true, completion: nil)
+                        
                     }else{
                         print("error editing period")
                     }
                 }
             }
         }
-        recalculateData()
+        queryHistory()
+        recalculateDataAndSave()
+        
     }
     
     
@@ -96,7 +98,85 @@ class PeriodDetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func recalculateData() {
+    func recalculateDataAndSave(){
+        let averageCycle = calcAverageCycle()
+      
+        
+        //average period length
+        let averageLength = calcAveragePeriodLength()
+        
+        // save to Preference table
+        let queryPreferences = PFQuery(className:"Preferences")
+        queryPreferences.includeKey("author")
+        queryPreferences.whereKey("author", equalTo: PFUser.current() as Any)
+        queryPreferences.findObjectsInBackground {
+            (records, error)in
+            if(records != nil){
+                records![0]["averageDaysBtwnPeriod"] = averageCycle
+                records![0]["averageDaysinPeriod"] = averageLength
+                print(averageCycle)
+                records![0].saveInBackground { (success, error) in
+                    if success{
+                        print("new averages saved")
+                        self.dismiss(animated: true, completion: nil)
+                    }else{
+                        print("error updating preference")
+                    }
+                }
+            }
+            else{
+                print("error updating preference ")
+            }
+            
+        }
+    }
+    
+    func calcAverageCycle() -> Int{
+        //TODO: handle new entry is in between data
+        //if count < 6, then add differences of what we have, devided by count.
+        var total = 0
+        let count = self.periodHistory.count
+        if( count < 6){
+            for period in self.periodHistory {
+                total += (period["daysBetweenPeriod"] as! Int)
+            }
+            
+            return Int(total / count)
+        }
+        else{
+            //else: add the differences of the last 6, devide by 6
+            var counter = 6
+            while(counter > 0){
+                total += self.periodHistory[counter - 1]["daysBetweenPeriod"] as! Int
+                counter -= 1
+            }
+            return Int(total / 6)
+            
+        }
+        
+    }
+    func calcAveragePeriodLength() -> Int{
+        //TODO: handle new entry is in between data
+        //if count < 6, then add differences of what we have, devided by count.
+        var total = 0
+        let count = self.periodHistory.count
+        if(count < 6){
+            for period in self.periodHistory {
+                total += (period["periodLength"] as! Int)
+            }
+            
+            return Int(total / count)
+        }
+        else{
+            //else: add the differences of the last 6, devide by 6
+            var counter = 6
+            while(counter > 0){
+                total += self.periodHistory[counter - 1]["periodLength"] as! Int
+                counter -= 1
+            }
+            return Int(total / 6)
+            
+        }
         
     }
     
