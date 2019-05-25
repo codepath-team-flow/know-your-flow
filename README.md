@@ -8,10 +8,10 @@ Group Project - Milestone 1 README
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
-2. [Milestone 2 README](#Group-Project-Milestone-2-README)
-2. [Milestone 3 README](#Group-Project-Milestone-3-README)
-2. [Milestone 4 README](#Group-Project-Milestone-4-README)
-2. [Final Milestone README](#Group-Project-Final-README)
+2. [Milestone 2 Build Progress](#Week-1)
+2. [Milestone 3 Build Progress](#Week-2)
+2. [Milestone 4 Build Progress](#Week-3)
+2. [Final Milestone Build Progress](#Week-4)
 
 ## Overview
 ### Description
@@ -253,9 +253,9 @@ cycleAverage | Number | number of average days between cycles
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-# Group Project - Milestone 2 README
-===
-## Completed User Stories:
+## Week 1
+
+### Completed User Stories:
 - [x] The user will be able to log in.
 - [x] The user will be able input their start dates.
 - [x] The user will be able to make an account 
@@ -280,8 +280,8 @@ cycleAverage | Number | number of average days between cycles
 * The user will be able to use passcode protection to prevent prying eyes
 * The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
 
-# Group Project - Milestone 3 README
-===
+## Week 2
+
 ### Completed User Stories:
 - [x] The user will be able to see their personal predicted period start and end dates on a calendar. 
 - [x] The user will be able to edit their inputted period start and end dates.
@@ -304,8 +304,8 @@ cycleAverage | Number | number of average days between cycles
 * The user will be able to use passcode protection to prevent prying eyes
 * The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
 
-# Group Project - Milestone 4 README
-===
+## Week 3
+
 ### Completed User Stories:
 - [x] The user will be able to see how many days until their next period.
 - [x] The user will be able to log out.
@@ -326,8 +326,8 @@ cycleAverage | Number | number of average days between cycles
 * The user will be able to use passcode protection to prevent prying eyes
 * The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
 
-# Group Project - Final README
-===
+## Week 4
+
 ### Completed User Stories:
 - [x] User will be able to see their personal predicted fertility start and end dates displayed on the calendar.
 
