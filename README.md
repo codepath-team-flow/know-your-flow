@@ -253,7 +253,7 @@ cycleAverage | Number | number of average days between cycles
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-#Group Project - Milestone 2 README
+# Group Project - Milestone 2 README
 ===
 ## Completed User Stories:
 - [x] The user will be able to log in.
@@ -280,7 +280,7 @@ cycleAverage | Number | number of average days between cycles
 * The user will be able to use passcode protection to prevent prying eyes
 * The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
 
-#Group Project - Milestone 3 README
+# Group Project - Milestone 3 README
 ===
 ### Completed User Stories:
 - [x] The user will be able to see their personal predicted period start and end dates on a calendar. 
@@ -304,7 +304,7 @@ cycleAverage | Number | number of average days between cycles
 * The user will be able to use passcode protection to prevent prying eyes
 * The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
 
-#Group Project - Milestone 4 README
+# Group Project - Milestone 4 README
 ===
 ### Completed User Stories:
 - [x] The user will be able to see how many days until their next period.
@@ -326,7 +326,7 @@ cycleAverage | Number | number of average days between cycles
 * The user will be able to use passcode protection to prevent prying eyes
 * The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
 
-#Group Project - Final README
+# Group Project - Final README
 ===
 ### Completed User Stories:
 - [x] User will be able to see their personal predicted fertility start and end dates displayed on the calendar.
