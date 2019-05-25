@@ -331,7 +331,7 @@ cycleAverage | Number | number of average days between cycles
 ### Completed User Stories:
 - [x] User will be able to see their personal predicted fertility start and end dates displayed on the calendar.
 
-<img src='http://g.recordit.co/pLsasS8Pss.gif' title='Video Walkthrough' width='' alt='Week 4 Video Walkthrough' />
+<img src='http://g.recordit.co/KSWD2oco8R.gif' title='Video Walkthrough' width='' alt='Week 4 Video Walkthrough' />
 
 ## Remaining User Stories:
 ### Bonus User Stories:
