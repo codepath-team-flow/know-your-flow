@@ -1,76 +1,3 @@
-Group Project - Milestone 4 README
-===
-### Completed User Stories:
-- [x] The user will be able to see how many days until their next period.
-- [x] The user will be able to log out.
-- [x] The user stays logged in
-
-<img src='http://g.recordit.co/pLsasS8PSS.gif' title='Video Walkthrough' width='' alt='Week 3 Video Walkthrough' /><img src='http://g.recordit.co/a352IfkG2Y.gif' title='Video Walkthrough' width='' alt='Week 3 Video Walkthrough' />
-
-## Remaining User Stories: 
-### Required User Stories:
-7. The user will be able to see their personal predicted fertility start and end dates.
-
-### Bonus User Stories:
-* The user will be able to customize how heavy their flow is.
-* The user will be able to input their mood for each day.
-* The user will be able to share their information with another user. 
-* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
-* The user will be able to sync their Apple Health or Fitbit data with the app.
-* The user will be able to use passcode protection to prevent prying eyes
-* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
-
-Group Project - Milestone 3 README
-===
-### Completed User Stories:
-- [x] The user will be able to see their personal predicted period start and end dates on a calendar. 
-- [x] The user will be able to edit their inputted period start and end dates.
-- [x] The user will be able to check their previous history of periods.
- 
-<img src='http://g.recordit.co/2UNU7JsLHo.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' /><img src='http://g.recordit.co/A8m7i4M2rH.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' />
-
-## Remaining User Stories:
-### Required User Stories:
-2. The user will be able to log out.
-5. The user will be able to see how many days until their next period. 
-7. The user will be able to see their personal predicted fertility start and end dates.
-
-### Bonus User Stories:
-* The user will be able to customize how heavy their flow is.
-* The user will be able to input their mood for each day.
-* The user will be able to share their information with another user. 
-* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
-* The user will be able to sync their Apple Health or Fitbit data with the app.
-* The user will be able to use passcode protection to prevent prying eyes
-* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
-
-Group Project - Milestone 2 README
-===
-## Completed User Stories:
-- [x] The user will be able to log in.
-- [x] The user will be able input their start dates.
-- [x] The user will be able to make an account 
-
-<img src='http://g.recordit.co/XF7DMYWcCh.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' /><img src='http://g.recordit.co/stlYAuHg7y.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
-
-## Remaining User Stories: 
-### Required User Stories: 
-2. The user will be able to log out.
-4. The user will be able to edit their inputted period start and end dates.
-5. The user will be able to see how many days until their next period.
-6. The user will be able to see their personal predicted period start and end dates on a calendar. 
-7. The user will be able to see their personal predicted fertility start and end dates.
-8. The user will be able to check their previous history of periods.
-
-### Bonus User Stories:
-* The user will be able to customize how heavy their flow is.
-* The user will be able to input their mood for each day.
-* The user will be able to share their information with another user. 
-* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
-* The user will be able to sync their Apple Health or Fitbit data with the app.
-* The user will be able to use passcode protection to prevent prying eyes
-* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
-
 Group Project - Milestone 1 README
 ===
 
@@ -81,7 +8,11 @@ Group Project - Milestone 1 README
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
-2. [Build Progress Gifs](#Build-Progress-Gifs)
+2. [Milestone 2 README](#Group-Project-Milestone-2-README)
+2. [Milestone 3 README](#Group-Project-Milestone-3-README)
+2. [Milestone 4 README](#Group-Project-Milestone-4-README)
+2. [Final Milestone README](#Group-Project-Final-README)
+
 ## Overview
 ### Description
 Know Your Flow is an app that helps women track their periods by letting them input their personal information and then predicting the next potential period.
@@ -321,3 +252,93 @@ cycleAverage | Number | number of average days between cycles
         ```
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+Group Project - Milestone 2 README
+===
+## Completed User Stories:
+- [x] The user will be able to log in.
+- [x] The user will be able input their start dates.
+- [x] The user will be able to make an account 
+
+<img src='http://g.recordit.co/XF7DMYWcCh.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' /><img src='http://g.recordit.co/stlYAuHg7y.gif' title='Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
+
+## Remaining User Stories: 
+### Required User Stories: 
+2. The user will be able to log out.
+4. The user will be able to edit their inputted period start and end dates.
+5. The user will be able to see how many days until their next period.
+6. The user will be able to see their personal predicted period start and end dates on a calendar. 
+7. The user will be able to see their personal predicted fertility start and end dates.
+8. The user will be able to check their previous history of periods.
+
+### Bonus User Stories:
+* The user will be able to customize how heavy their flow is.
+* The user will be able to input their mood for each day.
+* The user will be able to share their information with another user. 
+* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
+* The user will be able to sync their Apple Health or Fitbit data with the app.
+* The user will be able to use passcode protection to prevent prying eyes
+* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
+
+Group Project - Milestone 3 README
+===
+### Completed User Stories:
+- [x] The user will be able to see their personal predicted period start and end dates on a calendar. 
+- [x] The user will be able to edit their inputted period start and end dates.
+- [x] The user will be able to check their previous history of periods.
+ 
+<img src='http://g.recordit.co/2UNU7JsLHo.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' /><img src='http://g.recordit.co/A8m7i4M2rH.gif' title='Video Walkthrough' width='' alt='Week 2 Video Walkthrough' />
+
+## Remaining User Stories:
+### Required User Stories:
+2. The user will be able to log out.
+5. The user will be able to see how many days until their next period. 
+7. The user will be able to see their personal predicted fertility start and end dates.
+
+### Bonus User Stories:
+* The user will be able to customize how heavy their flow is.
+* The user will be able to input their mood for each day.
+* The user will be able to share their information with another user. 
+* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
+* The user will be able to sync their Apple Health or Fitbit data with the app.
+* The user will be able to use passcode protection to prevent prying eyes
+* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
+
+Group Project - Milestone 4 README
+===
+### Completed User Stories:
+- [x] The user will be able to see how many days until their next period.
+- [x] The user will be able to log out.
+- [x] The user stays logged in
+
+<img src='http://g.recordit.co/pLsasS8PSS.gif' title='Video Walkthrough' width='' alt='Week 3 Video Walkthrough' /><img src='http://g.recordit.co/a352IfkG2Y.gif' title='Video Walkthrough' width='' alt='Week 3 Video Walkthrough' />
+
+## Remaining User Stories: 
+### Required User Stories:
+7. The user will be able to see their personal predicted fertility start and end dates.
+
+### Bonus User Stories:
+* The user will be able to customize how heavy their flow is.
+* The user will be able to input their mood for each day.
+* The user will be able to share their information with another user. 
+* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
+* The user will be able to sync their Apple Health or Fitbit data with the app.
+* The user will be able to use passcode protection to prevent prying eyes
+* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
+
+Group Project - Final README
+===
+### Completed User Stories:
+- [x] User will be able to see their personal predicted fertility start and end dates displayed on the calendar.
+
+<img src='http://g.recordit.co/pLsasS8Pss.gif' title='Video Walkthrough' width='' alt='Week 4 Video Walkthrough' />
+
+## Remaining User Stories:
+### Bonus User Stories:
+* The user will be able to customize how heavy their flow is.
+* The user will be able to input their mood for each day.
+* The user will be able to share their information with another user. 
+* The user will be able to see chart analysis of their period flow (weight fluctuation, cycle length, symptoms, mood)
+* The user will be able to sync their Apple Health or Fitbit data with the app.
+* The user will be able to use passcode protection to prevent prying eyes
+* The user will be able to set timely reminders to take their prescription, log their cycle, drink water, etc ... 
