@@ -14,7 +14,7 @@ import Parse
 import AlamofireImage
 
 class PreferencesViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var ageLabel: UILabel!
@@ -30,30 +30,30 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        nameLabel.text = PFUser.current()?["name"] as! String
-        ageLabel.text = PFUser.current()?["age"] as! String
+        nameLabel.text = (PFUser.current()?["name"] as! String)
+        ageLabel.text = (PFUser.current()?["age"] as! String)
+        renderData()
         
-
         
-
+        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        renderData()
+        
         
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     
     @IBAction func onProfileButton(_ sender: Any) {
         let picker = UIImagePickerController()
@@ -76,7 +76,9 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
         query.whereKey("author", equalTo: PFUser.current())
         query.findObjectsInBackground {
             (records, error)in
-            if(records != nil){
+            if error != nil {
+                print("error loading data")
+            }else{
                 if(records![0]["profileImage"] != nil){
                     var imageObj = records![0]["profileImage"] as! PFFileObject
                     let urlString = imageObj.url
@@ -87,13 +89,11 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
                 self.averageDaysinPeriodLabel.text = String(records![0]["averageDaysinPeriod"] as! Int) + " days"
                 self.averageDaysBtwnCyclesLabel.text = String(records![0]["averageDaysBtwnPeriod"] as! Int) + " days"
             }
-            else{
-                print("error loading data")
-            }
             
             
-
-
+            
+            
+            
         }
     }
     
@@ -103,19 +103,26 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
         let scaledImage = image.af_imageScaled(to: size)
         imageView.image = scaledImage
         
-        
-        preferences["author"] = PFUser.current()!
-        let imageData = imageView.image!.pngData()
-        let file = PFFileObject(data: imageData!)
-        preferences["profileImage"] = file
-        preferences.saveInBackground { (success, error) in
-            if success {
-                self.dismiss(animated: true, completion: nil)
-                print("Saved Image in DB")
-            } else {
-                print("Error")
+        let preference = PFQuery(className: "Preferences")
+        preference.includeKey("author")
+        preference.whereKey("author", equalTo: PFUser.current())
+        preference.findObjectsInBackground {
+            (records, error)in
+            let imageData = self.imageView.image!.pngData()
+            let file = PFFileObject(data: imageData!)
+            records![0]["profileImage"] = file
+            
+            records![0].saveInBackground { (success, error) in
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                    self.renderData()
+                    print("Saved Image in DB")
+                } else {
+                    print("Error")
+                }
             }
         }
+        
         
         dismiss(animated: true, completion: nil)
         
