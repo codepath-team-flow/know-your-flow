@@ -114,17 +114,28 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         self.selectedDateLabel.text = self.dateFormatter.string(for: date)
         
         if periodDays.contains(date){
+            self.eventDiscriptionLabel.textColor = UIColorFromRGB(rgbValue: 0xF47983)
             self.eventDiscriptionLabel.text = "Period Day"
             
         }else if fertileDays.contains(date){
+            self.eventDiscriptionLabel.textColor = UIColorFromRGB(rgbValue: 0x7394A5)
             self.eventDiscriptionLabel.text = "Fertility Day"
         }else if expectedDays.contains(date){
+            self.eventDiscriptionLabel.textColor = UIColorFromRGB(rgbValue: 0x69d3a9)
             self.eventDiscriptionLabel.text = "Expected Period"
         }else{
             self.eventDiscriptionLabel.text = ""
         }
     }
     
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
     
     //Change image of cell
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {

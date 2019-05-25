@@ -123,9 +123,6 @@ class PreferencesViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
         
-        
-        dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func onLogoutButton(_ sender: Any) {
