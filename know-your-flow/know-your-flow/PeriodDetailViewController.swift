@@ -76,7 +76,7 @@ class PeriodDetailViewController: UIViewController {
                 self.dateFormatter.dateFormat = "MMM d, yyyy"
                 record["startDate"] = self.dateFormatter.date(from : self.startDateTextField.text!)
                 record["endDate"] = self.dateFormatter.date(from : self.endDateTextField.text!)
-                record["periodLength"] = (record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24
+                record["periodLength"] = Int((record["endDate"] as! Date).timeIntervalSince(record["startDate"] as! Date)/60/60/24)
                 
                 
                 period!.saveInBackground { (success, error) in
@@ -119,6 +119,7 @@ class PeriodDetailViewController: UIViewController {
         let historyQuery = PFQuery(className: "PeriodHistory")
         historyQuery.includeKey("author")
         historyQuery.whereKey("author", equalTo: PFUser.current())
+        historyQuery.order(byAscending: "startDate")
         historyQuery.findObjectsInBackground {
             (records, error)in
             if(records != nil){
@@ -128,7 +129,7 @@ class PeriodDetailViewController: UIViewController {
                     records![0]["daysBetweenPeriod"] = self.averageCycle
                     
                     var newPeriodLength = (records![0]["endDate"] as! Date).timeIntervalSince(records![0]["startDate"] as! Date)
-                    records![0]["periodLength"] = Int(newPeriodLength)/60/60/24
+                    records![0]["periodLength"] = Int(Int(newPeriodLength)/60/60/24)
                     records![0].saveInBackground{
                         (success, error)in
                         if success {
@@ -173,9 +174,9 @@ class PeriodDetailViewController: UIViewController {
                     for i in 1...(c-1) {
                         
                         var newCycle = (records![i]["startDate"] as! Date).timeIntervalSince(records![i-1]["startDate"] as! Date)
-                        records![i]["daysBetweenPeriod"] = Int(newCycle)/60/60/24
+                        records![i]["daysBetweenPeriod"] = Int(Int(newCycle)/60/60/24)
                         var newPeriodLength = (records![i]["endDate"] as! Date).timeIntervalSince(records![i]["startDate"] as! Date)
-                        records![i]["periodLength"] = Int(newPeriodLength)/60/60/24
+                        records![i]["periodLength"] = Int(Int(newPeriodLength)/60/60/24)
                         records![i].saveInBackground{
                             (success, error)in
                             if success {
